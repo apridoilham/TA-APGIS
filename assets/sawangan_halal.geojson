@@ -1,0 +1,215 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Warung Bumi Sadayana",
+				"ALAMAT": "Jl. Raya Muchtar, Sawangan, Kec. Sawangan, Kota Depok, Jawa Barat 16517",
+				"FOTO": "assets/images/resto/Warung Bumi Sadayana.jpg",
+				"JAM_BUKA": "Setiap hari, 10.00 – 22.00",
+				"RENTANG_HARGA": "Rp 25.000 – Rp 80.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7555798, -6.4073487]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Telaga Seafood images/resto",
+				"ALAMAT": "Jl. Raya Muchtar, Sawangan Baru, Kec. Sawangan, Kota Depok, Jawa Barat 16519",
+				"FOTO": "assets/images/resto/Telaga Seafood.jpg",
+				"JAM_BUKA": "Setiap hari, 11.00 – 21.00",
+				"RENTANG_HARGA": "Rp 50.000 – Rp 150.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7504295, -6.4058063]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "RM Saung Talaga",
+				"ALAMAT": "Jl. Raya Sawangan No.1, Rangkapan Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16435",
+				"FOTO": "assets/images/resto/RM Saung Talaga.jpg",
+				"JAM_BUKA": "Setiap hari, 10.00 – 20.30",
+				"RENTANG_HARGA": "Rp 40.000 – Rp 100.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7887257, -6.3942717]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Gemintang",
+				"ALAMAT": "Jl. Raya Muchtar, Sawangan, Kec. Sawangan, Kota Depok, Jawa Barat 16517",
+				"FOTO": "assets/images/resto/Gemintang.jpg",
+				"JAM_BUKA": "Selasa-Minggu 10.00 – 22.00 (Senin Tutup)",
+				"RENTANG_HARGA": "Rp 35.000 – Rp 100.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7531449, -6.4074169]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Jonkira Ramen Halal Sawangan",
+				"ALAMAT": "HPXW+J9, Bojongsari Lama, Kec. Bojongsari, Kota Depok, Jawa Barat",
+				"FOTO": "assets/images/resto/Jonkira Ramen Halal Sawangan.jpg",
+				"JAM_BUKA": "Setiap hari, 10.00 – 22.00",
+				"RENTANG_HARGA": "Rp 35.000 – Rp 70.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7460122, -6.4008689]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Kampung Kecil Depok Sawangan",
+				"ALAMAT": "Blk. DEF, Ruko Pancoran Mas, Jl. Raya Sawangan No.81, RT.1/RW.9, Mampang, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16511",
+				"FOTO": "assets/images/resto/Kampung Kecil Depok Sawangan.jpg",
+				"JAM_BUKA": "Setiap hari, 10.00 – 22.00",
+				"RENTANG_HARGA": "Rp 35.000 – Rp 70.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.8013503, -6.3948584]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Sambal Bakar Indonesia, Sawangan",
+				"ALAMAT": "Jl. Raya Sawangan No.7, Rangkapan Jaya Baru, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16434",
+				"FOTO": "assets/images/resto/Sambal Bakar Indonesia, Sawangan.jpg",
+				"JAM_BUKA": "Setiap hari, 10.00 – 24.00",
+				"RENTANG_HARGA": "Rp 20.000 – Rp 50.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7740506, -6.3955683]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Rumah makan hegar",
+				"ALAMAT": "Jl. Raya Muchtar, RT.002/RW.005, Sawangan Baru, Kec. Sawangan, Kota Depok, Jawa Barat 16511k",
+				"FOTO": "assets/images/resto/Rumah makan hegar.jpg",
+				"JAM_BUKA": "Setiap hari, 09.00 – 21.00",
+				"RENTANG_HARGA": "Rp 30.000 – Rp 70.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7681133, -6.4032728]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Waroeng SS (Spesial Sambal) Sawangan Depok",
+				"ALAMAT": "Jl. Raya Sawangan No.63, Mampang, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16435",
+				"FOTO": "assets/images/resto/Waroeng SS (Spesial Sambal) Sawangan Depok.jpg",
+				"JAM_BUKA": "Setiap hari, 10.00 – 22.00",
+				"RENTANG_HARGA": "Rp 20.000 – Rp 45.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7893502, -6.3935719]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Bakso Malang Enggal Depok (Pancoran Mas)",
+				"ALAMAT": "Jl. Raya Sawangan Jl. Kp. Kekupu No.01, RT.001/RW.013, Rangkapan Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16435",
+				"FOTO": "assets/images/resto/Bakso Malang Enggal Depok (Pancoran Mas).jpg",
+				"JAM_BUKA": "Setiap hari, 10.00 – 22.00",
+				"RENTANG_HARGA": "Rp 20.000 – Rp 40.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7936372, -6.3944015]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Warung Kopi Tepi Sungai",
+				"ALAMAT": "Jl. Swadaya 1 No.71, Sawangan, Kec. Sawangan, Kota Depok, Jawa Barat 16517",
+				"FOTO": "assets/images/resto/Warung Kopi Tepi Sungai.jpg",
+				"JAM_BUKA": "Setiap hari, 13.00 – 24.00",
+				"RENTANG_HARGA": "Rp 15.000 – Rp 35.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.766328, -6.3896328]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "RM Kari Minang Sawangan",
+				"ALAMAT": "Jl. Raya Muchtar No.45, RT.2/RW.2, Sawangan Baru, Kec. Sawangan, Kota Depok, Jawa Barat 16511",
+				"FOTO": "assets/images/resto/RM Kari Minang Sawangan.jpg",
+				"JAM_BUKA": "Setiap hari, 09.00 – 21.00",
+				"RENTANG_HARGA": "Rp 20.000 – Rp 50.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7556184, -6.4080034]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Almaz Fried Chicken - Sawangan Depok",
+				"ALAMAT": "Shila Eco Town, Jl. Senopati Boulevard.05, Blok ID No.D7-02, Bojongsari Lama, Bojongsari, Depok City, West Java 16516",
+				"FOTO": "assets/images/resto/Almaz Fried Chicken - Sawangan Depok.jpg",
+				"JAM_BUKA": "Setiap hari, 08.00 – 22.00",
+				"RENTANG_HARGA": "Rp 20.000 – Rp 50.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.746724, -6.4011878]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "Sushi Yay! - Depok Sawangan",
+				"ALAMAT": "Jl. Raya Muchtar No.88, Sawangan, Kec. Sawangan, Kota Depok, Jawa Barat 16517",
+				"FOTO": "assets/images/resto/Sushi Yay! - Depok Sawangan.jpg",
+				"JAM_BUKA": "Setiap hari, 10.00 – 22.00",
+				"RENTANG_HARGA": "Rp 30.000 – Rp 80.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7541531, -6.4077046]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"NAMOBJ": "MIE ACEH PAK ONE",
+				"ALAMAT": "Jl. Bukit Rivaria A2 No.18a, Bedahan, Kec. Sawangan, Kota Depok, Jawa Barat 16519",
+				"FOTO": "assets/images/resto/MIE ACEH PAK ONE.jpg",
+				"JAM_BUKA": "Setiap hari, 11.00 – 22.00",
+				"RENTANG_HARGA": "Rp 20.000 – Rp 45.000"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [106.7629062, -6.4096183]
+			}
+		}
+	]
+}

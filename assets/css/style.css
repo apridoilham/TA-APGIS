@@ -1,0 +1,239 @@
+:root {
+	--bs-teal: #00bcd4;
+	--bs-teal-dark: #0097a7;
+	--bs-teal-light: #e0f7fa;
+	--bs-coral: #ff7043;
+	--bs-coral-light: #fbe9e7;
+	--bs-dark-custom: #1a202c;
+	--bs-light-soft: #f8fafc;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	color: #4a5568;
+	background-color: #fff;
+	scroll-behavior: smooth;
+}
+
+/* === UTILITIES & TYPOGRAPHY === */
+.text-teal {
+	color: var(--bs-teal) !important;
+}
+.bg-teal {
+	background-color: var(--bs-teal) !important;
+}
+.bg-teal-light {
+	background-color: var(--bs-teal-light) !important;
+}
+.bg-teal-dark {
+	background-color: var(--bs-teal-dark) !important;
+}
+.bg-teal-darker {
+	background-color: #006064 !important;
+}
+.text-coral {
+	color: var(--bs-coral) !important;
+}
+.bg-coral-light {
+	background-color: var(--bs-coral-light) !important;
+}
+.text-dark-custom {
+	color: var(--bs-dark-custom) !important;
+}
+.bg-dark-custom {
+	background-color: var(--bs-dark-custom) !important;
+}
+.bg-light-soft {
+	background-color: var(--bs-light-soft) !important;
+}
+.bg-white\/20 {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.opacity-10 {
+	opacity: 0.1;
+}
+.opacity-25 {
+	opacity: 0.25;
+}
+.opacity-75 {
+	opacity: 0.75;
+}
+
+/* FIX ANCHOR SCROLL */
+section[id] {
+	scroll-margin-top: 90px;
+}
+
+/* GRADIENT TEXT */
+.text-teal-gradient {
+	background: linear-gradient(135deg, var(--bs-teal), #0097a7);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* DIVIDER */
+.divider {
+	width: 60px;
+	height: 4px;
+}
+
+/* === NAVBAR === */
+.backdrop-blur {
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.95) !important;
+}
+.nav-link {
+	color: #4a5568;
+	transition: all 0.3s;
+}
+.nav-link:hover {
+	color: var(--bs-teal);
+}
+
+/* === HERO BADGE (Fixed Visibility) === */
+.badge-custom-header {
+	background-color: #ffffff !important; /* Putih Solid */
+	color: var(--bs-teal-dark) !important;
+	border: 1px solid rgba(0, 188, 212, 0.4);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	padding: 0.6rem 1.2rem;
+	font-size: 0.85rem;
+}
+
+/* === BUTTONS === */
+.btn-teal {
+	background-color: var(--bs-teal);
+	color: white;
+	border: none;
+	transition: all 0.3s ease;
+}
+.btn-teal:hover {
+	background-color: var(--bs-teal-dark);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+	color: white;
+}
+.btn-outline-teal {
+	border: 2px solid var(--bs-teal);
+	color: var(--bs-teal);
+	transition: all 0.3s ease;
+}
+.btn-outline-teal:hover {
+	background-color: var(--bs-teal);
+	color: white;
+}
+
+/* === CARDS & HOVER === */
+.hover-lift {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.bg-light-pattern {
+	background-image: radial-gradient(#00bcd4 0.5px, transparent 0.5px),
+		radial-gradient(#00bcd4 0.5px, #ffffff 0.5px);
+	background-size: 20px 20px;
+	background-position: 0 0, 10px 10px;
+	background-color: #fbfdfd;
+}
+
+.icon-box-lg {
+	width: 60px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.75rem;
+}
+
+.icon-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.3s ease;
+}
+
+/* === TEAM & PROJECT CARDS === */
+.letter-spacing-2 {
+	letter-spacing: 2px;
+}
+.team-card {
+	background: white;
+	border-color: #f1f5f9;
+}
+.team-card.border-teal {
+	border-color: var(--bs-teal) !important;
+	background-color: #f0fdf4;
+}
+
+.project-case-study-card {
+	background: linear-gradient(135deg, #e0f7fa 0%, #f0fdff 100%);
+	border: 1px solid rgba(0, 188, 212, 0.1);
+	transition: transform 0.3s ease;
+}
+.project-case-study-card:hover {
+	transform: translateY(-5px);
+}
+
+/* === CONTACT FORM === */
+.form-control:focus {
+	background-color: #fff !important;
+	border-color: var(--bs-teal) !important;
+	box-shadow: 0 0 0 0.25rem rgba(0, 188, 212, 0.15) !important;
+}
+
+/* === LEAFLET MAP === */
+.map-container {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.leaflet-popup-content-wrapper {
+	border-radius: 8px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.leaflet-control-layers,
+.leaflet-control-zoom {
+	border: none !important;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+	border-radius: 8px !important;
+}
+/* Mini Map Styling */
+.leaflet-control-minimap {
+	border-radius: 8px !important;
+	border: 3px solid white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	z-index: 900;
+}
+.leaflet-control-geocoder {
+	display: none;
+} /* Hide search */
+.marker-cluster-small {
+	background-color: rgba(0, 188, 212, 0.6);
+}
+.marker-cluster-small div {
+	background-color: rgba(0, 188, 212, 0.8);
+	color: white;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 992px) {
+	.hero-section .display-3 {
+		font-size: 2.2rem;
+	}
+	#map {
+		height: 450px !important;
+	}
+}
+@media (max-width: 768px) {
+	.display-3 {
+		font-size: 2rem;
+	}
+	#map {
+		height: 400px !important;
+	}
+}
