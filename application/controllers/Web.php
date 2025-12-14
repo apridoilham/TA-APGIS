@@ -6,7 +6,7 @@ class Web extends CI_Controller {
     public function index()
     {
         $data = array(
-            'title' => 'Sistem Informasi Geospasial Halal (SIG-Halal) Sawangan' 
+            'title' => 'Sistem Informasi Geospasial Halal (SIG-HALAL) Sawangan' 
         );
         $this->load->view('web/home', $data);
     }

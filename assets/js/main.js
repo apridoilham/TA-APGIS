@@ -1,133 +1,147 @@
 document.addEventListener("DOMContentLoaded", function () {
-	// 1. INISIALISASI PETA UTAMA
-	const sawanganCenter = [-6.3811, 106.7725];
-	const map = L.map("map", { zoomControl: true }).setView(sawanganCenter, 14);
+	// 1. TITIK TENGAH (Sawangan)
+	const center = [-6.3811, 106.7725];
+	const zoom = 14;
 
-	// === DEFINISI URL TILE LAYERS ===
-	const tiles = {
-		osm: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-		satellite:
-			"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-		carto:
-			"https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-		// GANTI INI: URL Google Maps Roadmap
-		google: "https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+	// 2. JENIS-JENIS PETA (Layer)
+	// Peta Jalan
+	const g_road = L.tileLayer(
+		"http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+		{
+			maxZoom: 20,
+			subdomains: ["mt0", "mt1", "mt2", "mt3"],
+			attribution: "Google Maps",
+		}
+	);
+	// Peta Satelit
+	const g_sat = L.tileLayer(
+		"http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+		{
+			maxZoom: 20,
+			subdomains: ["mt0", "mt1", "mt2", "mt3"],
+			attribution: "Google Satellite",
+		}
+	);
+	// OpenStreetMap
+	const osm = L.tileLayer(
+		"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+		{
+			attribution: "OpenStreetMap",
+		}
+	);
+
+	// 3. MENAMPILKAN PETA UTAMA
+	const map = L.map("map", {
+		center: center,
+		zoom: zoom,
+		zoomControl: false, // Zoom dipindah ke bawah
+		layers: [g_road], // Default: Jalan
+	});
+	L.control.zoom({ position: "bottomright" }).addTo(map);
+
+	// 4. GRUP MARKER (Wadah Titik Restoran)
+	// Gunakan featureGroup agar bisa auto-zoom (getBounds)
+	const markerGroup = L.featureGroup().addTo(map);
+
+	// 5. TOMBOL GANTI PETA (Kanan Atas)
+	const baseMaps = {
+		"Peta Jalan": g_road,
+		"Peta Satelit": g_sat,
+		OpenStreetMap: osm,
 	};
-
-	const attributions = {
-		osm: "&copy; OpenStreetMap",
-		esri: "Tiles &copy; Esri",
-		carto: "&copy; CARTO",
-		google: "&copy; Google Maps",
+	const overlayMaps = {
+		"📍 Tampilkan Restoran": markerGroup,
 	};
+	L.control.layers(baseMaps, overlayMaps, { position: "topright" }).addTo(map);
 
-	// === MEMBUAT LAYER UNTUK PETA UTAMA ===
-	const mainLayers = {
-		OpenStreetMap: L.tileLayer(tiles.osm, { attribution: attributions.osm }),
-		"Esri World Imagery": L.tileLayer(tiles.satellite, {
-			attribution: attributions.esri,
-		}),
-		"CartoDB Voyager": L.tileLayer(tiles.carto, {
-			attribution: attributions.carto,
-		}),
-		// GANTI INI: Tambahkan Layer Google Maps
-		"Google Maps": L.tileLayer(tiles.google, {
-			attribution: attributions.google,
-		}),
-	};
+	// 6. MINIMAP SINKRON (Fitur Keren)
+	// Layer khusus minimap agar tidak bentrok
+	const mm_road = L.tileLayer(
+		"http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+		{ subdomains: ["mt0", "mt1", "mt2", "mt3"] }
+	);
+	const mm_sat = L.tileLayer(
+		"http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+		{ subdomains: ["mt0", "mt1", "mt2", "mt3"] }
+	);
+	const mm_osm = L.tileLayer(
+		"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+	);
 
-	// Tambahkan layer default ke Peta Utama (Google Maps sebagai default agar keren)
-	mainLayers["Google Maps"].addTo(map);
-
-	// === MEMBUAT LAYER TERPISAH UNTUK MINI MAP ===
-	const miniLayers = {
-		OpenStreetMap: L.tileLayer(tiles.osm),
-		"Esri World Imagery": L.tileLayer(tiles.satellite),
-		"CartoDB Voyager": L.tileLayer(tiles.carto),
-		// GANTI INI: Layer Google Maps untuk MiniMap
-		"Google Maps": L.tileLayer(tiles.google),
-	};
-
-	// Inisialisasi Mini Map dengan layer default (Google Maps)
-	const miniMap = new L.Control.MiniMap(miniLayers["Google Maps"], {
+	const miniMap = new L.Control.MiniMap(mm_road, {
 		toggleDisplay: true,
-		position: "bottomright",
-		width: 150,
-		height: 150,
-		zoomLevelOffset: -5,
+		minimized: false,
+		position: "bottomleft",
+		width: 140,
+		height: 140,
 	}).addTo(map);
 
-	// === LOGIKA SINKRONISASI MINI MAP ===
+	// Logika Ganti Tema MiniMap
 	map.on("baselayerchange", function (e) {
-		const layerName = e.name;
-		const newMiniLayer = miniLayers[layerName];
-		if (newMiniLayer) {
-			miniMap.changeLayer(newMiniLayer);
-		}
+		if (e.name === "Peta Jalan") miniMap.changeLayer(mm_road);
+		else if (e.name === "Peta Satelit") miniMap.changeLayer(mm_sat);
+		else miniMap.changeLayer(mm_osm);
 	});
 
-	// === MARKER & DATA GEOJSON ===
-	const markers = L.markerClusterGroup({
-		chunkedLoading: true,
-		spiderfyOnMaxZoom: true,
-	});
-
-	// Custom Icon
+	// 7. DESAIN ICON MARKER
 	const halalIcon = L.divIcon({
-		html: `<div style="background:#00BCD4;color:#FF5722;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;box-shadow: 0 2px 5px rgba(0,0,0,0.4); border: 2px solid #FF5722;"><i class="bi bi-pin-map-fill"></i></div>`,
-		className: "",
-		iconSize: [34, 34],
-		iconAnchor: [17, 34],
-		popupAnchor: [0, -34],
+		className: "custom-pin",
+		html: `<div style="background:#10B981; width:40px; height:40px; border-radius:50%; border:3px solid white; display:flex; justify-content:center; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
+                <i class="bi bi-geo-alt-fill text-white fs-5"></i>
+               </div>`,
+		iconSize: [40, 40],
+		iconAnchor: [20, 40],
+		popupAnchor: [0, -45],
 	});
 
-	function renderMarkers(data) {
-		markers.clearLayers();
+	// 8. LOAD DATA RESTORAN (GeoJSON)
+	let cleanUrl = BASE_URL;
+	if (!cleanUrl.endsWith("/")) cleanUrl += "/";
 
-		L.geoJson(data, {
-			pointToLayer: (feature, latlng) => L.marker(latlng, { icon: halalIcon }),
-			onEachFeature: (feature, layer) => {
-				const p = feature.properties;
-				const nama = p.NAMOBJ || "Tempat Makan";
-				const alamat = p.ALAMAT || "-";
-				const jam = p.JAM_BUKA || "-";
-				const harga = p.RENTANG_HARGA || "-";
-				const foto = p.FOTO || "";
+	fetch(cleanUrl + "assets/sawangan_halal.geojson")
+		.then((res) => {
+			if (!res.ok) throw new Error("Gagal load GeoJSON");
+			return res.json();
+		})
+		.then((data) => {
+			L.geoJSON(data, {
+				pointToLayer: (f, latlng) => L.marker(latlng, { icon: halalIcon }),
+				onEachFeature: (f, layer) => {
+					const p = f.properties;
+					// Data
+					const nama = p.NAMOBJ || "Restoran Halal";
+					const harga = p.RENTANG_HARGA || "-";
+					const jam = p.JAM_BUKA || "-";
+					const alamat = p.ALAMAT || "-";
+					const img = p.FOTO
+						? cleanUrl + p.FOTO
+						: "https://placehold.co/400x250/eee/999?text=No+Image";
 
-				const statusBadge =
-					jam.toLowerCase().includes("setiap hari") || jam.includes("24")
-						? '<span class="badge bg-success">BUKA</span>'
-						: '<span class="badge bg-warning text-dark">CEK JAM</span>';
+					// HTML Popup
+					const popupHTML = `
+                        <div>
+                            <img src="${img}" class="popup-img">
+                            <div class="popup-body">
+                                <span class="popup-title">${nama}</span>
+                                <div class="popup-row"><i class="bi bi-tag-fill"></i> ${harga}</div>
+                                <div class="popup-row"><i class="bi bi-clock-fill"></i> ${jam}</div>
+                                <div class="popup-row"><i class="bi bi-geo-alt-fill"></i> ${alamat}</div>
+                                <div class="popup-badge"><i class="bi bi-check-circle-fill"></i> TERVERIFIKASI HALAL</div>
+                            </div>
+                        </div>
+                    `;
+					layer.bindPopup(popupHTML);
+					markerGroup.addLayer(layer);
+				},
+			});
 
-				let popup = `<div class="popup-custom" style="width:240px">`;
-				if (foto)
-					popup += `<img src="${
-						BASE_URL + foto
-					}" class="img-fluid rounded mb-2" style="width:100%;height:120px;object-fit:cover">`;
-				popup += `<h6 class="fw-bold mb-1">${nama}</h6>`;
-				popup += `<p class="small mb-1 text-muted"><i class="bi bi-tag-fill"></i> ${harga}</p>`;
-				popup += `<p class="small mb-1 text-muted"><i class="bi bi-clock"></i> ${jam} ${statusBadge}</p>`;
-				popup += `<p class="small mb-0 text-muted"><i class="bi bi-geo-alt"></i> ${alamat}</p>`;
-				popup += `<hr class="my-1"><span class="badge bg-teal w-100"><i class="bi bi-patch-check-fill"></i> HALAL</span></div>`;
-
-				layer.bindPopup(popup);
-				markers.addLayer(layer);
-			},
+			// Auto Zoom ke area marker
+			if (markerGroup.getLayers().length > 0) {
+				map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
+			}
+		})
+		.catch((err) => {
+			console.error(err);
+			alert("Gagal memuat data peta. Pastikan file GeoJSON ada.");
 		});
-
-		map.addLayer(markers);
-
-		if (!document.querySelector(".leaflet-control-layers")) {
-			const overlayMaps = { "Restoran Halal": markers };
-			L.control.layers(mainLayers, overlayMaps).addTo(map);
-		}
-
-		if (markers.getLayers().length > 0) map.fitBounds(markers.getBounds());
-	}
-
-	// Load Data
-	fetch(BASE_URL + "assets/sawangan_halal.geojson")
-		.then((response) => response.json())
-		.then((data) => renderMarkers(data))
-		.catch((err) => console.error("Gagal memuat data:", err));
 });

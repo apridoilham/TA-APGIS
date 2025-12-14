@@ -3,211 +3,212 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Sistem Informasi Geospasial Halal (SIG-Halal) Sawangan.">
     <title><?= $title ?></title>
-    <link rel="icon" href="https://placehold.co/32x32/00BCD4/FFFFFF?text=SIG" type="image/png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.css" />
     
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=20.0') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=45.0') ?>">
 </head>
-<body>
+<body class="bg-light-gray">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white/90 backdrop-blur py-3 sticky-top shadow-sm border-bottom">
+    <nav class="navbar navbar-expand-lg fixed-top glass-navbar">
         <div class="container">
-            <a class="navbar-brand fw-bolder text-teal d-flex align-items-center" href="<?= base_url() ?>">
-                <span class="icon-box bg-teal text-white rounded-2 me-2 d-flex align-items-center justify-content-center" style="width:35px;height:35px;"><i class="bi bi-map-fill"></i></span>
-                <span>SIG-HALAL.id</span>
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <div class="icon-box bg-emerald text-white rounded-3"><i class="bi bi-moon-stars-fill"></i></div>
+                <div class="lh-1">
+                    <span class="fw-bold text-dark d-block">SIG-HALAL</span>
+                    <span class="fs-xs text-muted">Sawangan Area</span>
+                </div>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtama">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+            <div class="collapse navbar-collapse" id="menuUtama">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-3">
                     <li class="nav-item"><a class="nav-link fw-semibold" href="#hero">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold" href="#halal-info">Edukasi Halal</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold" href="#peta">Peta Lokasi</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold" href="#team">Tim Kami</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-teal px-4 rounded-pill fw-bold shadow-sm" href="#contact">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#wawasan">Dalil & Wawasan</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#adab">Adab Makan</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#peta">Peta</a></li>
+                    <li class="nav-item"><a class="btn btn-emerald rounded-pill px-4 shadow-sm" href="#peta">Mulai Jelajah</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
-    <header id="hero" class="hero-section position-relative overflow-hidden" style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f2f1 100%);">
-        <div class="position-absolute top-0 end-0 translate-middle-y bg-teal opacity-10 rounded-circle" style="width:300px;height:300px;filter:blur(60px);"></div>
-        <div class="position-absolute bottom-0 start-0 translate-middle-y bg-coral opacity-10 rounded-circle" style="width:200px;height:200px;filter:blur(50px);"></div>
 
-        <div class="container text-center py-5 position-relative" style="z-index: 2; margin-top: 40px;">
-            <span class="badge badge-custom-header rounded-pill mb-4 text-uppercase">
-                <i class="bi bi-geo-alt-fill me-1 text-coral"></i> GIS Project • Kelompok 4
+    <section id="hero" class="d-flex align-items-center min-vh-100 bg-white position-relative overflow-hidden">
+        <div class="blob-decoration"></div>
+        <div class="container position-relative z-2 text-center">
+            <span class="badge bg-emerald-light text-emerald-dark px-3 py-2 rounded-pill mb-3 border border-emerald-200">
+                <i class="bi bi-check-circle-fill me-1"></i> Data Resmi 2025
             </span>
-            
-            <h1 class="display-3 fw-bolder mb-3 text-dark-custom tracking-tight">Sistem Informasi <span class="text-teal-gradient">Geospasial Halal</span></h1>
-            <h2 class="h5 mb-4 text-muted fw-normal">Studi Kasus Pemetaan Kuliner: Kecamatan Sawangan, Kota Depok</h2>
-            <p class="lead mx-auto mb-5 text-muted" style="max-width: 800px;">
-                Mengintegrasikan teknologi pemetaan digital untuk mempermudah masyarakat menemukan destinasi kuliner yang <b>Halal</b> dan <b>Thayyib</b>.
+            <h1 class="display-3 fw-extrabold text-dark mb-4">
+                Kuliner Halal & <span class="text-emerald">Thayyib.</span>
+            </h1>
+            <p class="lead text-secondary mb-5 mx-auto" style="max-width: 700px;">
+                Platform informasi geografis untuk menemukan makanan yang <strong>Halal (Boleh)</strong> dan <strong>Thayyib (Baik/Sehat)</strong> di kawasan Sawangan, Depok.
             </p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#peta" class="btn btn-teal btn-lg px-5 rounded-pill shadow-lg hover-lift"><i class="bi bi-map me-2"></i> Buka Peta</a>
-                <a href="#halal-info" class="btn btn-outline-teal btn-lg px-5 rounded-pill hover-lift">Pelajari Halal</a>
-            </div>
-        </div>
-    </header>
-    
-    <section id="halal-info" class="py-5 bg-white position-relative">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bolder text-dark-custom">Pentingnya Makanan Halal</h2>
-                <div class="divider mx-auto bg-teal rounded"></div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="card h-100 border-0 shadow-sm hover-card bg-light-pattern">
-                        <div class="card-body p-4">
-                            <div class="icon-box-lg bg-white shadow-sm text-teal rounded-circle mb-3"><i class="bi bi-book-half"></i></div>
-                            <h4 class="fw-bold text-teal mb-3">Definisi Halal & Thayyib</h4>
-                            <p class="text-secondary text-justify">
-                                <b>Halal</b> (حلال) adalah segala sesuatu yang diperbolehkan oleh syariat Islam. 
-                                Harus disertai dengan <b>Thayyib</b> (طيب) yang berarti baik, bersih, bergizi, dan aman.
-                            </p>
-                            <ul class="list-unstyled mt-4">
-                                <li class="mb-2 d-flex align-items-center text-muted"><i class="bi bi-check-circle-fill text-teal me-2"></i> Bebas zat haram (Babi, Alkohol).</li>
-                                <li class="mb-2 d-flex align-items-center text-muted"><i class="bi bi-check-circle-fill text-teal me-2"></i> Penyembelihan syar'i.</li>
-                                <li class="mb-2 d-flex align-items-center text-muted"><i class="bi bi-check-circle-fill text-teal me-2"></i> Higienis & Aman (Thayyib).</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow-sm mb-4 border-start border-4 border-teal">
-                        <div class="card-body p-4">
-                            <h5 class="fw-bold text-dark-custom mb-3"><i class="bi bi-quote me-2 text-teal"></i> Dalil Al-Qur'an</h5>
-                            <p class="arabic-text text-end fs-3 mb-2 text-dark-custom" dir="rtl">
-                                يَا أَيُّهَا النَّاسُ كُلُوا مِمَّا فِي الْأَرْضِ حَلَالًا طَيِّبًا
-                            </p>
-                            <p class="fst-italic text-muted small mb-0">"Wahai manusia! Makanlah dari (makanan) yang halal dan baik yang terdapat di bumi..." (QS. Al-Baqarah: 168)</p>
-                        </div>
-                    </div>
-                    <div class="card border-0 shadow-sm border-start border-4 border-coral">
-                        <div class="card-body p-4">
-                            <h5 class="fw-bold text-dark-custom mb-3"><i class="bi bi-chat-quote-fill me-2 text-coral"></i> Hadist Nabi SAW</h5>
-                            <p class="arabic-text text-end fs-4 mb-2 text-dark-custom" dir="rtl">
-                                أَيُّهَا النَّاسُ إِنَّ اللَّهَ طَيِّبٌ لَا يَقْبَلُ إِلَّا طَيِّبًا
-                            </p>
-                            <p class="fst-italic text-muted small mb-0">"Sesungguhnya Allah itu <b>Thayyib</b> (baik), tidak menerima kecuali yang baik..." (HR. Muslim)</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#peta" class="btn btn-emerald btn-lg px-5 rounded-pill shadow hover-up"><i class="bi bi-map-fill me-2"></i> Buka Peta</a>
+                <a href="#adab" class="btn btn-outline-secondary btn-lg px-5 rounded-pill hover-up">Pelajari Adab</a>
             </div>
         </div>
     </section>
 
-    <section id="peta" class="py-5 bg-light-soft">
+    <section id="wawasan" class="py-section bg-surface">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="fw-bolder text-teal">Peta Interaktif Sawangan</h2>
-                <p class="text-muted">Data lokasi kuliner berdasarkan survei lapangan (Data Real).</p>
+                <h6 class="text-emerald text-uppercase fw-bold ls-1">Landasan Syariah</h6>
+                <h2 class="fw-bold text-dark display-6">Mengapa Harus Halal?</h2>
             </div>
-            <div class="card border-0 shadow-lg rounded-4 overflow-hidden p-1 bg-white">
-                <div class="card-body p-0 position-relative">
-                    <div id="map" style="height: 650px; width: 100%; border-radius: 12px;"></div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-6">
+                    <div class="card-info h-100 p-4 bg-white rounded-4 border-0 shadow-sm position-relative overflow-hidden">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-emerald text-white">Al-Qur'an</span>
+                            <i class="bi bi-book-half text-emerald fs-3 opacity-50"></i>
+                        </div>
+                        <p class="arabic-text text-end fs-3 text-dark mb-3" dir="rtl" style="line-height: 2;">
+                            يَا أَيُّهَا النَّاسُ كُلُوا مِمَّا فِي الْأَرْضِ حَلَالًا طَيِّبًا
+                        </p>
+                        <div class="border-start border-4 border-emerald ps-3">
+                            <p class="text-muted fst-italic mb-0">"Wahai manusia! Makanlah dari (makanan) yang <strong>halal</strong> dan <strong>baik</strong> yang terdapat di bumi..." <br><small class="fw-bold">(QS. Al-Baqarah: 168)</small></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="team" class="py-5 bg-white border-top">
-        <div class="container">
-            <div class="text-center mb-5">
-                <span class="text-uppercase text-teal fw-bold letter-spacing-2 small">Tim Pengembang</span>
-                <h2 class="fw-bolder text-dark-custom mt-2">Kelompok 4</h2>
-                <div class="divider mx-auto bg-coral rounded"></div>
-            </div>
-
-            <div class="row justify-content-center g-4 mb-5">
-                <div class="col-md-6 col-lg-4"><div class="team-card p-4 text-center rounded-4 h-100 border hover-lift"><div class="avatar mx-auto mb-3 bg-teal-light text-teal fw-bold d-flex align-items-center justify-content-center fs-4 rounded-circle" style="width: 80px; height: 80px;">MF</div><h5 class="fw-bold text-dark mb-1">M. Fahri Afrizal</h5><p class="text-muted small mb-0">NIM: 11220930000002</p></div></div>
-                <div class="col-md-6 col-lg-4"><div class="team-card p-4 text-center rounded-4 h-100 border hover-lift border-teal"><div class="avatar mx-auto mb-3 bg-teal text-white fw-bold d-flex align-items-center justify-content-center fs-4 rounded-circle" style="width: 80px; height: 80px;">AI</div><h5 class="fw-bold text-dark mb-1">Aprido Ilham</h5><p class="text-muted small mb-0">NIM: 11220930000004</p><span class="badge bg-teal mt-2 rounded-pill">Map Developer</span></div></div>
-                <div class="col-md-6 col-lg-4"><div class="team-card p-4 text-center rounded-4 h-100 border hover-lift"><div class="avatar mx-auto mb-3 bg-teal-light text-teal fw-bold d-flex align-items-center justify-content-center fs-4 rounded-circle" style="width: 80px; height: 80px;">MC</div><h5 class="fw-bold text-dark mb-1">M. Caesar M.</h5><p class="text-muted small mb-0">NIM: 11220930000016</p></div></div>
-                <div class="col-md-6 col-lg-4"><div class="team-card p-4 text-center rounded-4 h-100 border hover-lift"><div class="avatar mx-auto mb-3 bg-coral-light text-coral fw-bold d-flex align-items-center justify-content-center fs-4 rounded-circle" style="width: 80px; height: 80px;">J</div><h5 class="fw-bold text-dark mb-1">Janniethia</h5><p class="text-muted small mb-0">NIM: 11220930000019</p></div></div>
-                <div class="col-md-6 col-lg-4"><div class="team-card p-4 text-center rounded-4 h-100 border hover-lift"><div class="avatar mx-auto mb-3 bg-coral-light text-coral fw-bold d-flex align-items-center justify-content-center fs-4 rounded-circle" style="width: 80px; height: 80px;">AK</div><h5 class="fw-bold text-dark mb-1">Ayu Kusuma Dewi</h5><p class="text-muted small mb-0">NIM: 11220930000021</p></div></div>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="project-case-study-card p-5 rounded-4 shadow-sm text-center">
-                        <div class="icon-wrapper mb-4"><i class="bi bi-file-earmark-code display-3 text-teal-gradient"></i></div>
-                        <h5 class="text-muted text-uppercase letter-spacing-2 mb-2 small fw-bold">Fokus Penelitian</h5>
-                        <h3 class="fw-bolder text-dark mb-3">Studi Kasus: Penerapan SIG Akademik</h3>
-                        <p class="text-muted mb-0">Implementasi teknis pemetaan data menggunakan CodeIgniter 3, Leaflet.js, dan Bootstrap 5.</p>
+                <div class="col-md-6">
+                    <div class="card-info h-100 p-4 bg-white rounded-4 border-0 shadow-sm position-relative overflow-hidden">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-warning text-dark">Hadist</span>
+                            <i class="bi bi-chat-quote-fill text-warning fs-3 opacity-50"></i>
+                        </div>
+                        <p class="arabic-text text-end fs-3 text-dark mb-3" dir="rtl" style="line-height: 2;">
+                            إِنَّ اللَّهَ طَيِّبٌ لَا يَقْبَلُ إِلَّا طَيِّبًا
+                        </p>
+                        <div class="border-start border-4 border-warning ps-3">
+                            <p class="text-muted fst-italic mb-0">"Sesungguhnya Allah itu <strong>Thayyib (Baik)</strong>, tidak menerima kecuali yang baik..." <br><small class="fw-bold">(HR. Muslim)</small></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="contact" class="py-5 bg-light-soft position-relative overflow-hidden">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bolder text-dark-custom">Hubungi Kami</h2>
-                <p class="text-muted">Punya pertanyaan atau masukan? Kirimkan pesan kepada kami.</p>
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card-info h-100 p-4 bg-white rounded-4 border-0 shadow-sm">
+                        <div class="icon-circle bg-emerald-light text-emerald mb-3"><i class="bi bi-heart-pulse-fill"></i></div>
+                        <h5 class="fw-bold">Kesehatan Fisik</h5>
+                        <p class="text-muted small">Makanan halal pasti bersih dari darah, bangkai, dan kotoran yang membawa penyakit bagi tubuh.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-info h-100 p-4 bg-white rounded-4 border-0 shadow-sm">
+                        <div class="icon-circle bg-emerald-light text-emerald mb-3"><i class="bi bi-lightbulb-fill"></i></div>
+                        <h5 class="fw-bold">Kejernihan Akal</h5>
+                        <p class="text-muted small">Menghindari makanan/minuman memabukkan (Khamr) menjaga akal tetap sehat dan sadar.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-info h-100 p-4 bg-white rounded-4 border-0 shadow-sm">
+                        <div class="icon-circle bg-emerald-light text-emerald mb-3"><i class="bi bi-stars"></i></div>
+                        <h5 class="fw-bold">Kabulnya Doa</h5>
+                        <p class="text-muted small">Rasulullah SAW bersabda bahwa makanan haram adalah penghalang utama diterimanya doa.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="card border-0 shadow-lg rounded-4 h-100 overflow-hidden bg-teal-dark text-white">
-                        <div class="card-body p-4 p-lg-5">
-                            <h4 class="fw-bold mb-4">Info Kontak</h4>
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="icon-box bg-white/20 rounded-circle p-2 me-3"><i class="bi bi-geo-alt-fill fs-5"></i></div>
-                                <div><h6 class="fw-bold mb-1">Lokasi Kampus</h6><p class="small opacity-75 mb-0">FST UIN Syarif Hidayatullah Jakarta</p></div>
-                            </div>
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="icon-box bg-white/20 rounded-circle p-2 me-3"><i class="bi bi-envelope-fill fs-5"></i></div>
-                                <div><h6 class="fw-bold mb-1">Email</h6><p class="small opacity-75 mb-0">kelompok4@uinjkt.ac.id</p></div>
-                            </div>
-                            <hr class="border-white opacity-25">
-                            <div class="d-flex gap-2 mt-4">
-                                <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width:40px;height:40px;"><i class="bi bi-instagram"></i></a>
-                                <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width:40px;height:40px;"><i class="bi bi-github"></i></a>
-                            </div>
-                        </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 bg-white border-start border-5 border-success shadow-sm h-100">
+                        <h4 class="fw-bold text-success mb-3"><i class="bi bi-check-circle-fill me-2"></i> Kriteria Halal</h4>
+                        <ul class="list-unstyled text-secondary d-grid gap-2 small">
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Hewan disembelih dengan Nama Allah.</li>
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Semua hewan laut (ikan/udang) segar.</li>
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Tumbuhan & buah tidak beracun.</li>
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Higienis & Thayyib (Baik).</li>
+                        </ul>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 bg-white border-start border-5 border-danger shadow-sm h-100">
+                        <h4 class="fw-bold text-danger mb-3"><i class="bi bi-x-circle-fill me-2"></i> Kriteria Haram</h4>
+                        <ul class="list-unstyled text-secondary d-grid gap-2 small">
+                            <li><i class="bi bi-x-lg text-danger me-2"></i> Babi, Anjing, dan turunannya.</li>
+                            <li><i class="bi bi-x-lg text-danger me-2"></i> Bangkai & Darah yang mengalir.</li>
+                            <li><i class="bi bi-x-lg text-danger me-2"></i> Hewan buas bertaring/berkuku tajam.</li>
+                            <li><i class="bi bi-x-lg text-danger me-2"></i> Khamr (Alkohol) & Memabukkan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="col-lg-8">
-                    <div class="card border-0 shadow-lg rounded-4 h-100 bg-white">
-                        <div class="card-body p-4 p-lg-5">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-semibold small text-muted">Nama Lengkap</label>
-                                        <input type="text" class="form-control bg-light border-0" placeholder="Nama Anda">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-semibold small text-muted">Email</label>
-                                        <input type="email" class="form-control bg-light border-0" placeholder="email@contoh.com">
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label fw-semibold small text-muted">Pesan</label>
-                                        <textarea class="form-control bg-light border-0" rows="4" placeholder="Tulis pesan Anda..."></textarea>
-                                    </div>
-                                    <div class="col-12 mt-4">
-                                        <button type="button" class="btn btn-teal px-5 rounded-pill fw-bold hover-lift w-100 w-md-auto">Kirim Pesan</button>
-                                    </div>
+    <section id="adab" class="py-section bg-white border-top">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-emerald text-uppercase fw-bold ls-1">Etika Islami</h6>
+                <h2 class="fw-bold text-dark display-6">Adab Makan & Minum</h2>
+                <p class="text-muted">Menjadikan aktivitas makan bernilai ibadah.</p>
+            </div>
+
+            <div class="bg-dark text-white rounded-4 p-4 p-md-5 position-relative overflow-hidden">
+                <div class="blob-decoration opacity-10"></div>
+                <div class="position-relative z-2">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="d-flex gap-3">
+                                <div class="icon-circle bg-emerald text-white flex-shrink-0"><i class="bi bi-chat-text"></i></div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Membaca Basmalah</h5>
+                                    <p class="arabic-text text-emerald fs-4 mb-0">بِسْمِ اللَّهِ</p>
+                                    <p class="text-white-50 small mb-0">"Dengan menyebut nama Allah"</p>
                                 </div>
-                            </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex gap-3">
+                                <div class="icon-circle bg-emerald text-white flex-shrink-0"><i class="bi bi-hand-index-thumb"></i></div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Tangan Kanan</h5>
+                                    <p class="arabic-text text-emerald fs-4 mb-0">كُلْ بِيَمِينِكَ</p>
+                                    <p class="text-white-50 small mb-0">"Makanlah dengan tangan kananmu"</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex gap-3">
+                                <div class="icon-circle bg-emerald text-white flex-shrink-0"><i class="bi bi-heart-fill"></i></div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Akhiri Hamdalah</h5>
+                                    <p class="arabic-text text-emerald fs-4 mb-0">الْحَمْدُ لِلَّهِ</p>
+                                    <p class="text-white-50 small mb-0">"Segala puji bagi Allah"</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12"><hr class="border-white opacity-25 my-4"></div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-person-check fs-3 text-emerald"></i>
+                                <div><h6 class="fw-bold mb-0">Duduk Tawadhu</h6><small class="text-white-50">Tidak makan sambil berdiri.</small></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-slash-circle fs-3 text-emerald"></i>
+                                <div><h6 class="fw-bold mb-0">Tidak Mencela</h6><small class="text-white-50">Jika tidak suka, cukup tinggalkan.</small></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-cup-straw fs-3 text-emerald"></i>
+                                <div><h6 class="fw-bold mb-0">Tidak Berlebihan</h6><small class="text-white-50">Berhenti sebelum kenyang.</small></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -215,18 +216,43 @@
         </div>
     </section>
 
-    <footer class="bg-dark-custom text-white py-4 mt-5 border-top border-teal border-5">
+    <section id="peta" class="py-section bg-surface">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-4">
+                <div class="col-md-8">
+                    <span class="badge bg-emerald text-white mb-2 px-3 py-2 rounded-pill">LIVE DATA</span>
+                    <h2 class="fw-bold text-dark">Peta Persebaran Digital</h2>
+                    <p class="text-muted">Gunakan tombol di pojok kanan atas peta untuk mengganti tampilan.</p>
+                </div>
+            </div>
+            <div class="map-frame p-2 bg-white rounded-4 shadow-lg border">
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="teknologi" class="py-5 bg-white border-top">
         <div class="container text-center">
-            <p class="small text-white-50 mb-0">© 2025 SIG-HALAL Sawangan | Kelompok 4 UIN Jakarta</p>
+            <p class="text-uppercase text-muted fw-bold small mb-4">Website ini dibangun menggunakan:</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <div class="tech-badge bg-white shadow-sm"><i class="bi bi-fire text-warning"></i> CodeIgniter 3</div>
+                <div class="tech-badge bg-white shadow-sm"><i class="bi bi-bootstrap-fill text-primary"></i> Bootstrap 5</div>
+                <div class="tech-badge bg-white shadow-sm"><i class="bi bi-map-fill text-success"></i> Leaflet JS</div>
+                <div class="tech-badge bg-white shadow-sm"><i class="bi bi-filetype-json text-dark"></i> GeoJSON</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4 text-center">
+        <div class="container">
+            <small class="opacity-50">© 2025 Kelompok 4. Sistem Informasi Geospasial UIN Jakarta.</small>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
-    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script>const BASE_URL = '<?= base_url() ?>';</script>
-    <script src="<?= base_url('assets/js/main.js?v=15.7') ?>"></script>
+    <script src="<?= base_url('assets/js/main.js?v=45.0') ?>"></script>
 </body>
 </html>
