@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	// 7. DESAIN ICON MARKER
 	const halalIcon = L.divIcon({
 		className: "custom-pin",
-		html: `<div style="background:#10B981; width:40px; height:40px; border-radius:50%; border:3px solid white; display:flex; justify-content:center; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
+		html: `<div style="background:#10B982; width:40px; height:40px; border-radius:50%; border:3px solid white; display:flex; justify-content:center; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
                 <i class="bi bi-geo-alt-fill text-white fs-5"></i>
                </div>`,
 		iconSize: [40, 40],
