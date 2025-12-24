@@ -46,6 +46,11 @@
     <section id="hero" class="d-flex align-items-center min-vh-100 bg-white position-relative overflow-hidden">
         <div class="blob-decoration"></div>
         <div class="container position-relative z-2 text-center">
+
+            <div class="mb-4">
+                <img src="<?= base_url('assets/images/halal.png') ?>" alt="Logo Halal" style="max-height: 250px;" class="img-fluid hover-up">
+            </div>
+
             <span class="badge bg-emerald-light text-emerald-dark px-3 py-2 rounded-pill mb-3 border border-emerald-200">
                 <i class="bi bi-check-circle-fill me-1"></i> Data Resmi 2025
             </span>
