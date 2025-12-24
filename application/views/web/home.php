@@ -38,6 +38,7 @@
                     <li class="nav-item"><a class="nav-link fw-semibold" href="#wawasan">Dalil & Wawasan</a></li>
                     <li class="nav-item"><a class="nav-link fw-semibold" href="#adab">Adab Makan</a></li>
                     <li class="nav-item"><a class="nav-link fw-semibold" href="#peta">Peta</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#about">About</a></li>
                     <li class="nav-item"><a class="btn btn-emerald rounded-pill px-4 shadow-sm" href="#peta">Mulai Jelajah</a></li>
                 </ul>
             </div>
@@ -308,6 +309,97 @@
         </div>
     </section>
 
+    <section id="about" class="py-5 bg-white position-relative overflow-hidden px-3 px-md-0">
+    <div class="position-absolute top-50 start-0 translate-middle-y opacity-10" style="z-index: 0; color: #d1fae5; pointer-events: none;">
+        <svg width="600" height="600" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,80.3,-46.4C88.8,-33.7,92.8,-16.8,91.7,-0.6C90.6,15.6,84.4,31.2,75.7,43.9C67,56.6,55.8,66.3,42.9,74.1C30,81.9,15,87.8,-0.4,88.5C-15.9,89.2,-31.7,84.7,-45.4,77.1C-59.1,69.5,-70.7,58.9,-79.7,46.2C-88.7,33.5,-95.1,16.7,-95.5,-0.2C-95.8,-17.1,-90.2,-34.3,-80.8,-47.7C-71.4,-61.1,-58.2,-70.8,-44.3,-78.1C-30.4,-85.4,-15.2,-90.3,0.4,-91C16,-91.7,32,-88.2,44.7,-76.4Z" transform="translate(100 100)" />
+        </svg>
+    </div>
+    <div class="container py-4 position-relative z-2">
+        <div class="text-center mb-5 mx-auto" style="max-width: 700px;">
+            <h6 class="text-emerald fw-bold ls-2 text-uppercase mb-3">
+                <i class="bi bi-people-fill me-2"></i>Tentang Kami
+            </h6>
+            <h2 class="display-5 fw-extrabold text-dark mb-3">
+                Para Penggerak <span class="text-emerald">Kebaikan.</span>
+            </h2>
+            <p class="lead text-secondary">
+                Berkenalan dengan tim berdedikasi yang bekerja di balik layar untuk memetakan ekosistem kuliner Halal & Thayyib di Sawangan bagi Anda dan keluarga.
+            </p>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 justify-content-center">
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
+                    <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
+                        <img src="<?= base_url('assets/images/about/Aprido.png') ?>"
+                             class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Foto Anggota Tim">
+                    </div>
+                    <h5 class="fw-bold text-dark mb-1">Aprido Ilham</h5>
+                    <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">11220930000004</p>
+                    <p class="text-secondary small opacity-75 mb-0">
+                        Menahkodai visi proyek untuk memastikan integrasi data halal yang akurat.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
+                    <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
+                        <img src="<?= base_url('assets/images/about/Fahri.png') ?>"
+                             class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Foto Anggota Tim">
+                    </div>
+                    <h5 class="fw-bold text-dark mb-1">M. Fahri Afrizal</h5>
+                    <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">1122093000002</p>
+                    <p class="text-secondary small opacity-75 mb-0">
+                        Ahli pemetaan digital yang mengubah data lokasi menjadi peta interaktif.
+                    </p>
+                </div>
+            </div>
+
+             <div class="col">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
+                    <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
+                        <img src="<?= base_url('assets/images/about/Caesar.jpeg') ?>"
+                             class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Foto Anggota Tim">
+                    </div>
+                    <h5 class="fw-bold text-dark mb-1">M. Caesar Maulana</h5>
+                    <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">11220930000016</p>
+                    <p class="text-secondary small opacity-75 mb-0">
+                        Arsitek teknis yang membangun platform web agar cepat dan responsif.
+                    </p>
+                </div>
+            </div>
+
+             <div class="col">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
+                    <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
+                        <img src="<?= base_url('assets/images/about/Janet.jpeg') ?>"
+                             class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Foto Anggota Tim">
+                    </div>
+                    <h5 class="fw-bold text-dark mb-1">Janniethia</h5>
+                    <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">11220930000019</p>
+                    <p class="text-secondary small opacity-75 mb-0">
+                        Periset lapangan yang memvalidasi sertifikasi halal dan kualitas thayyib resto.
+                    </p>
+                </div>
+            </div>
+
+             <div class="col">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
+                    <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
+                        <img src="<?= base_url('assets/images/about/Ayu.png') ?>"
+                             class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Foto Anggota Tim">
+                    </div>
+                    <h5 class="fw-bold text-dark mb-1">Ayu Kusuma Dewi</h5>
+                    <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">11220930000021</p>
+                    <p class="text-secondary small opacity-75 mb-0">
+                        Perancang antarmuka yang memastikan pengalaman pengguna yang nyaman dan intuitif.
+                    </p>
+                </div>
+            </div>
+        </div> 
+    </div> 
+    </section>
     <section id="teknologi" class="py-5 bg-white border-top">
         <div class="container text-center">
             <p class="text-uppercase text-muted fw-bold small mb-4">Website ini dibangun menggunakan:</p>

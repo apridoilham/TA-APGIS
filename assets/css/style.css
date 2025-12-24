@@ -210,3 +210,17 @@ body {
 	border-radius: 8px !important;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+.team-card {
+	transition: all 0.3s ease-in-out;
+}
+/* Saat mouse diarahkan ke kartu, kartu sedikit naik dan bayangannya menebal */
+.team-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+/* Opsional: membuat gambar sedikit membesar saat di-hover */
+.team-card:hover img {
+	transform: scale(1.05);
+	transition: all 0.3s ease-in-out;
+}
