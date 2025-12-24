@@ -34,6 +34,7 @@
             <div class="collapse navbar-collapse" id="menuUtama">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-3">
                     <li class="nav-item"><a class="nav-link fw-semibold" href="#hero">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#berita">Berita</a></li>
                     <li class="nav-item"><a class="nav-link fw-semibold" href="#wawasan">Dalil & Wawasan</a></li>
                     <li class="nav-item"><a class="nav-link fw-semibold" href="#adab">Adab Makan</a></li>
                     <li class="nav-item"><a class="nav-link fw-semibold" href="#peta">Peta</a></li>
@@ -44,13 +45,19 @@
     </nav>
 
     <section id="hero" class="d-flex align-items-center min-vh-100 bg-white position-relative overflow-hidden">
-        <div class="blob-decoration"></div>
+    
+    <div class="position-absolute top-0 start-0 w-100 h-100"
+         style="
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1920&auto=format&fit=crop');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; /* 'cover' agar gambar mengisi penuh layar tanpa terdistorsi */
+            z-index: 0;
+         ">
+    </div>
+
+    <div class="blob-decoration position-absolute" style="z-index: 1;"></div>
         <div class="container position-relative z-2 text-center">
-
-            <div class="mb-4">
-                <img src="<?= base_url('assets/images/halal.png') ?>" alt="Logo Halal" style="max-height: 250px;" class="img-fluid hover-up">
-            </div>
-
             <span class="badge bg-emerald-light text-emerald-dark px-3 py-2 rounded-pill mb-3 border border-emerald-200">
                 <i class="bi bi-check-circle-fill me-1"></i> Data Resmi 2025
             </span>
@@ -63,6 +70,69 @@
             <div class="d-flex justify-content-center gap-3 flex-wrap">
                 <a href="#peta" class="btn btn-emerald btn-lg px-5 rounded-pill shadow hover-up"><i class="bi bi-map-fill me-2"></i> Buka Peta</a>
                 <a href="#adab" class="btn btn-outline-secondary btn-lg px-5 rounded-pill hover-up">Pelajari Adab</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="berita" class="py-section bg-surface border-top">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5">
+                <div>
+                    <h6 class="text-emerald text-uppercase fw-bold ls-1">Info Terkini</h6>
+                    <h2 class="fw-bold text-dark display-6">Berita & Artikel Halal</h2>
+                </div>
+                <a href="#" class="btn btn-outline-dark rounded-pill px-4 d-none d-md-block">Lihat Semua</a>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-up">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Sertifikasi Halal" style="height: 200px; object-fit: cover;">
+                            <span class="badge bg-emerald position-absolute top-0 end-0 m-3 shadow-sm">Berita</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <small class="text-muted d-block mb-2"><i class="bi bi-calendar-event me-1"></i> 20 Des 2025</small>
+                            <h5 class="fw-bold mb-3"><a href="#" class="text-dark text-decoration-none">Program Sehati 2025: Sertifikasi Halal Gratis Kembali Dibuka</a></h5>
+                            <p class="text-muted small mb-3">BPJPH kembali membuka kuota sertifikasi halal gratis (Sehati) untuk UMK di wilayah Depok dan sekitarnya...</p>
+                            <a href="#" class="text-emerald fw-bold text-decoration-none small">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-up">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Bahan Makanan" style="height: 200px; object-fit: cover;">
+                            <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 shadow-sm">Edukasi</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <small class="text-muted d-block mb-2"><i class="bi bi-calendar-event me-1"></i> 18 Des 2025</small>
+                            <h5 class="fw-bold mb-3"><a href="#" class="text-dark text-decoration-none">Waspada Titik Kritis Kehalalan pada Olahan Daging</a></h5>
+                            <p class="text-muted small mb-3">Mengenal istilah-istilah menu restoran yang seringkali samar kehalalannya, seperti penggunaan Angciu dan Mirin...</p>
+                            <a href="#" class="text-emerald fw-bold text-decoration-none small">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-up">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Restoran Sawangan" style="height: 200px; object-fit: cover;">
+                            <span class="badge bg-emerald position-absolute top-0 end-0 m-3 shadow-sm">Rekomendasi</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <small class="text-muted d-block mb-2"><i class="bi bi-calendar-event me-1"></i> 15 Des 2025</small>
+                            <h5 class="fw-bold mb-3"><a href="#" class="text-dark text-decoration-none">5 Kuliner Legendaris di Sawangan yang Wajib Dicoba</a></h5>
+                            <p class="text-muted small mb-3">Daftar tempat makan keluarga di Sawangan yang sudah mengantongi sertifikat halal MUI dan rasanya juara...</p>
+                            <a href="#" class="text-emerald fw-bold text-decoration-none small">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4 d-block d-md-none">
+                 <a href="#" class="btn btn-outline-dark rounded-pill px-4">Lihat Semua Berita</a>
             </div>
         </div>
     </section>

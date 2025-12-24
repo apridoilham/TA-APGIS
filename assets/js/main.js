@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	// 4. GRUP MARKER (Wadah Titik Restoran)
 	// Gunakan featureGroup agar bisa auto-zoom (getBounds)
 	const markerGroup = L.featureGroup().addTo(map);
+	const polygonGroup = L.featureGroup(); // Untuk Wilayah Kelurahan
+	const roadGroup = L.featureGroup(); // Untuk Jaringan Jalan
 
 	// 5. TOMBOL GANTI PETA (Kanan Atas)
 	const baseMaps = {
@@ -51,9 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
 	const overlayMaps = {
 		"📍 Tampilkan Restoran": markerGroup,
+		"🗺️ Batas Wilayah": polygonGroup, // Menambahkan polygon ke control
+		"🛣️ Jaringan Jalan": roadGroup
 	};
 	L.control.layers(baseMaps, overlayMaps, { position: "topright" }).addTo(map);
-
 	// 6. MINIMAP SINKRON (Fitur Keren)
 	// Layer khusus minimap agar tidak bentrok
 	const mm_road = L.tileLayer(
@@ -144,4 +147,55 @@ document.addEventListener("DOMContentLoaded", function () {
 			console.error(err);
 			alert("Gagal memuat data peta. Pastikan file GeoJSON ada.");
 		});
+
+		fetch(cleanUrl + "assets/jalan_sawangan.geojson")
+        .then((res) => res.json())
+        .then((data) => {
+            L.geoJSON(data, {
+                // Style Jalan: Garis agak tebal, warna biru tua/abu-abu
+                style: function(feature) {
+                    return {
+                        color: "#6f7c8fff",   // Warna Biru Standar Jalan
+                        weight: 2,          // Ketebalan garis
+                        opacity: 0.8        // Tidak terlalu transparan
+                    };
+                },
+                
+                onEachFeature: function(feature, layer) {
+                    roadGroup.addLayer(layer);
+                }
+            });
+            
+            polygonGroup.bringToBack();
+
+        })
+        .catch(
+			(err) => console.error("Error Jalan:", err)
+	);
+
+	fetch(cleanUrl + "assets/sawangan_pg.geojson")
+    .then((res) => res.json())
+    .then((data) => {
+        L.geoJSON(data, {
+            style: function(feature) {
+                return {
+                    color: "#999",        // Warna garis batas
+                    weight: 1,            // Ketebalan garis
+                    fillColor: "#31a354", // Warna isi (hijau)
+                    fillOpacity: 0.6
+                };
+            },
+
+            onEachFeature: function(feature, layer) {
+                // Popup nama wilayah (opsional, bisa dihapus jika tidak dibutuhkan)
+                if (feature.properties && feature.properties.NAMOBJ) {
+                    layer.bindPopup(feature.properties.NAMOBJ);
+                }
+
+                // Masukkan ke group polygon
+                polygonGroup.addLayer(layer);
+            }
+        });
+    })
+    .catch((err) => console.error("Error Polygon:", err));
 });
