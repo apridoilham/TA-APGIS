@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-	// 0. AUTO CLOSE NAVBAR
-	document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
+	// 0. AUTO CLOSE NAVBAR (DIPERBAIKI)
+	// Sekarang memilih ".nav-link" DAN tombol ".btn-nav" (Mulai Jelajah)
+	const navLinks = document.querySelectorAll(
+		".navbar-nav .nav-link, .navbar-nav .btn-nav"
+	);
+
+	navLinks.forEach((link) => {
 		link.addEventListener("click", () => {
 			const navbarCollapse = document.getElementById("menuUtama");
+			// Cek apakah navbar sedang terbuka (class 'show' ada)
 			if (navbarCollapse.classList.contains("show")) {
 				new bootstrap.Collapse(navbarCollapse).hide();
 			}
@@ -35,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		{ attribution: "OpenStreetMap" }
 	);
 
-	// Inisialisasi Peta dengan zoomControl FALSE (Kita tambah manual agar bisa diatur posisinya)
+	// Inisialisasi Peta
 	const map = L.map("map", {
 		center: center,
 		zoom: zoom,
@@ -69,8 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		)
 		.addTo(map);
 
-	// 3. MINIMAP SINKRON (VERSI FIX)
-	// Gunakan OSM untuk minimap agar ringan dan tidak blank
+	// 3. MINIMAP SINKRON (FIXED)
 	const mm_layer = L.tileLayer(
 		"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 		{ attribution: "" }
@@ -78,13 +83,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	const miniMap = new L.Control.MiniMap(mm_layer, {
 		toggleDisplay: true,
-		minimized: false, // Default terbuka
+		minimized: false,
 		position: "bottomleft",
-		width: isMobile ? 120 : 150, // Ukuran sedikit lebih besar agar jelas
+		width: isMobile ? 120 : 150,
 		height: isMobile ? 120 : 150,
 		zoomLevelOffset: -5,
 		aimingRectOptions: {
-			color: "#ef4444", // Merah Terang
+			color: "#ef4444",
 			weight: 2,
 			clickable: false,
 		},
@@ -97,23 +102,20 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 	}).addTo(map);
 
-	// FIX UTAMA: Paksa refresh ukuran minimap setelah 1 detik
-	// Ini mengatasi masalah peta putih/blank
+	// REFRESH MINIMAP
 	setTimeout(() => {
 		miniMap._miniMap.invalidateSize();
 	}, 1000);
 
-	// Opsional: Ganti layer minimap jika user ganti layer utama
+	// SINKRONISASI LAYER MINIMAP
 	map.on("baselayerchange", function (e) {
 		let newMiniLayer;
 		if (e.name === "Peta Satelit") {
-			// Jika user pilih satelit, minimap pakai satelit juga
 			newMiniLayer = L.tileLayer(
 				"http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
 				{ subdomains: ["mt0", "mt1", "mt2", "mt3"] }
 			);
 		} else {
-			// Selain itu pakai OSM yang ringan
 			newMiniLayer = L.tileLayer(
 				"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			);
@@ -155,7 +157,6 @@ document.addEventListener("DOMContentLoaded", function () {
 							? cleanUrl + p.FOTO
 							: "https://placehold.co/400x250/eee/999?text=No+Image";
 
-					// Perbaikan format URL Google Maps agar valid
 					const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
 						nama + " " + alamat
 					)}`;
