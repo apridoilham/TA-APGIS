@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"/>
     
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=64.0') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=65.0') ?>">
     
     <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 </head>
@@ -580,6 +580,6 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
     <script>const BASE_URL = '<?= base_url() ?>';</script>
-    <script src="<?= base_url('assets/js/main.js?v=64.0') ?>"></script>
+    <script src="<?= base_url('assets/js/main.js?v=65.0') ?>"></script>
 </body>
 </html>
