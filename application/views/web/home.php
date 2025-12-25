@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+
     <title><?= $title ?></title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -15,7 +17,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"/>
     
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=60.0') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=64.0') ?>">
     
     <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 </head>
@@ -557,9 +559,9 @@
                 <div class="col-lg-3 col-md-6">
                     <h6 class="text-white fw-bold mb-4 text-uppercase ls-1">Ikuti & Dukung</h6>
                     <div class="d-flex gap-3 mb-4">
-                        <a href="#" class="social-btn-outline rounded-circle d-flex align-items-center justify-content-center transition-all" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="social-btn-outline rounded-circle d-flex align-items-center justify-content-center transition-all" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                        <a href="#" class="social-btn-outline rounded-circle d-flex align-items-center justify-content-center transition-all" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.instagram.com/apridoilham/" class="social-btn-outline rounded-circle d-flex align-items-center justify-content-center transition-all" aria-label="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://github.com/apridoilham/" class="social-btn-outline rounded-circle d-flex align-items-center justify-content-center transition-all" aria-label="GitHub" target="_blank"><i class="bi bi-github"></i></a>
+                        <a href="https://www.linkedin.com/in/aprido-ilham-900344253/" class="social-btn-outline rounded-circle d-flex align-items-center justify-content-center transition-all" aria-label="LinkedIn" target="_blank"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
             </div>
@@ -578,6 +580,6 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
     <script>const BASE_URL = '<?= base_url() ?>';</script>
-    <script src="<?= base_url('assets/js/main.js?v=60.0') ?>"></script>
+    <script src="<?= base_url('assets/js/main.js?v=64.0') ?>"></script>
 </body>
 </html>

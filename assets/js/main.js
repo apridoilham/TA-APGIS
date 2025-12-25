@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-	// 0. AUTO CLOSE NAVBAR (MOBILE)
+	// 0. AUTO CLOSE NAVBAR
 	document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
 		link.addEventListener("click", () => {
 			const navbarCollapse = document.getElementById("menuUtama");
@@ -35,33 +35,35 @@ document.addEventListener("DOMContentLoaded", function () {
 		{ attribution: "OpenStreetMap" }
 	);
 
+	// Inisialisasi Peta dengan zoomControl FALSE (Kita tambah manual agar bisa diatur posisinya)
 	const map = L.map("map", {
 		center: center,
 		zoom: zoom,
 		zoomControl: false,
 		layers: [g_road],
-		dragging: !L.Browser.mobile,
-		tap: !L.Browser.mobile,
+		tap: true,
 	});
 
-	if (L.Browser.mobile) {
-		map.dragging.enable();
-		map.tap.enable();
-	}
-	L.control.zoom({ position: "bottomright" }).addTo(map);
+	// POSISI ZOOM CONTROL: Kanan Bawah
+	L.control
+		.zoom({
+			position: "bottomright",
+		})
+		.addTo(map);
 
-	// 2. GROUPS
+	// 2. GROUPS & LAYER CONTROL
 	const markerGroup = L.featureGroup().addTo(map);
 	const polygonGroup = L.featureGroup();
 	const roadGroup = L.featureGroup();
 
+	// POSISI LAYER CONTROL: Kanan Atas
 	L.control
 		.layers(
 			{ "Peta Jalan": g_road, "Peta Satelit": g_sat, OpenStreetMap: osm },
 			{
-				"📍 Tampilkan Restoran": markerGroup,
+				"📍 Restoran Halal": markerGroup,
 				"🗺️ Batas Wilayah": polygonGroup,
-				"🛣️ Jaringan Jalan": roadGroup,
+				"🛣️ Jalan": roadGroup,
 			},
 			{ position: "topright", collapsed: true }
 		)
@@ -84,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		toggleDisplay: true,
 		minimized: isMobile,
 		position: "bottomleft",
-		width: isMobile ? 80 : 120,
-		height: isMobile ? 80 : 120,
+		width: isMobile ? 100 : 120,
+		height: isMobile ? 100 : 120,
 	}).addTo(map);
 
 	map.on("baselayerchange", function (e) {
@@ -98,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	});
 
-	// 4. ICON
+	// 4. ICON MARKER
 	const halalIcon = L.divIcon({
 		className: "custom-pin",
 		html: `<div style="background:#10B982; width:36px; height:36px; border-radius:50%; border:2px solid white; display:flex; justify-content:center; align-items:center; box-shadow:0 3px 8px rgba(0,0,0,0.3);">
@@ -109,11 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		popupAnchor: [0, -20],
 	});
 
-	// 5. DATA FETCH & POPUP
+	// 5. LOAD DATA
 	let cleanUrl = BASE_URL.endsWith("/") ? BASE_URL : BASE_URL + "/";
+	const geoJsonUrl = cleanUrl + "assets/sawangan_halal.geojson";
 
-	fetch(cleanUrl + "assets/sawangan_halal.geojson")
-		.then((res) => res.json())
+	fetch(geoJsonUrl)
+		.then((res) => {
+			if (!res.ok) throw new Error("Gagal load GeoJSON");
+			return res.json();
+		})
 		.then((data) => {
 			L.geoJSON(data, {
 				pointToLayer: (f, latlng) => L.marker(latlng, { icon: halalIcon }),
@@ -123,15 +129,16 @@ document.addEventListener("DOMContentLoaded", function () {
 					const harga = p.RENTANG_HARGA || "Harga Standar";
 					const jam = p.JAM_BUKA || "09.00 - 21.00";
 					const alamat = p.ALAMAT || "Sawangan, Depok";
-					const img = p.FOTO
-						? cleanUrl + p.FOTO
-						: "https://placehold.co/400x250/eee/999?text=No+Image";
+					const img =
+						p.FOTO && p.FOTO !== ""
+							? cleanUrl + p.FOTO
+							: "https://placehold.co/400x250/eee/999?text=No+Image";
 
 					const popupHTML = `
-                        <div class="card border-0 shadow-none w-100" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+                        <div class="card border-0 shadow-none w-100" style="font-family: 'Plus Jakarta Sans', sans-serif; margin: 0;">
                             <div class="position-relative">
-                                <img src="${img}" class="card-img-top w-100" style="height: 150px; object-fit: cover; display: block;" alt="${nama}">
-                                <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%);"></div>
+                                <img src="${img}" class="card-img-top w-100" style="height: 140px; object-fit: cover; display: block;" alt="${nama}" onerror="this.src='https://placehold.co/400x250/eee/999?text=Image+Error'">
+                                <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%);"></div>
                                 <span class="position-absolute top-0 start-0 m-2 px-2 py-1 bg-white text-emerald fw-bold rounded-pill shadow-sm" style="font-size: 0.65rem; z-index: 5;">
                                     <i class="bi bi-patch-check-fill me-1"></i>Halal Verified
                                 </span>
@@ -170,7 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                         </div>
                     `;
-
 					layer.bindPopup(popupHTML, {
 						closeButton: true,
 						autoPan: true,
@@ -183,7 +189,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			if (markerGroup.getLayers().length > 0) {
 				map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
 			}
-		});
+		})
+		.catch((err) => console.error("Gagal memuat GeoJSON:", err));
 
 	fetch(cleanUrl + "assets/jalan_sawangan.geojson")
 		.then((r) => r.json())
@@ -208,44 +215,33 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 		});
 
-	// 6. SCROLL SPY (FIXED & IMPROVED)
-	// Fungsi untuk menandai menu aktif berdasarkan scroll
+	// 6. SCROLL SPY
 	function onScroll() {
-		const navbarHeight = document.querySelector(".navbar").offsetHeight;
-		// Tambahkan sedikit buffer agar menu aktif sebelum benar-benar sampai di atas
-		const scrollPos = window.scrollY + navbarHeight + 50;
-
 		const sections = document.querySelectorAll("section");
 		const navLinks = document.querySelectorAll(".nav-link");
+		const navbarHeight = document.querySelector(".navbar").offsetHeight;
 
-		let currentSectionId = "";
-
-		// Cari section mana yang sedang dilihat user
+		let current = "";
 		sections.forEach((section) => {
-			const top = section.offsetTop;
-			const height = section.offsetHeight;
-
-			// Cek jika posisi scroll berada di dalam range section ini
-			if (scrollPos >= top && scrollPos < top + height) {
-				currentSectionId = section.getAttribute("id");
+			const sectionTop = section.offsetTop - navbarHeight - 50;
+			const sectionBottom = sectionTop + section.offsetHeight;
+			if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+				current = section.getAttribute("id");
 			}
 		});
-
-		// Update class active di navbar
+		if (
+			window.innerHeight + window.scrollY >=
+			document.body.offsetHeight - 50
+		) {
+			current = sections[sections.length - 1].getAttribute("id");
+		}
 		navLinks.forEach((link) => {
 			link.classList.remove("active");
-			// Pastikan link href cocok dengan section ID (contoh: href="#hero")
-			if (
-				currentSectionId &&
-				link.getAttribute("href") === `#${currentSectionId}`
-			) {
+			if (link.hash === `#${current}`) {
 				link.classList.add("active");
 			}
 		});
 	}
-
-	// Jalankan saat di-scroll
 	window.addEventListener("scroll", onScroll);
-	// Jalankan juga saat halaman pertama kali dimuat (untuk refresh state)
 	window.addEventListener("load", onScroll);
 });

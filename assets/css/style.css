@@ -63,7 +63,7 @@ section[id] {
 	font-weight: 600;
 }
 
-/* --- ACTIVE LINK STATE --- */
+/* Active Link State */
 .nav-link {
 	color: #64748b !important;
 	font-weight: 600;
@@ -74,8 +74,8 @@ section[id] {
 	transition: color 0.3s ease;
 	position: relative;
 }
-.nav-link:hover,
-.nav-link.active {
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
 	color: var(--emerald) !important;
 }
 
@@ -166,7 +166,7 @@ section[id] {
 	font-size: 1.5rem;
 }
 
-/* --- 5. MAPS & POPUP --- */
+/* --- 5. MAPS & POPUP STYLE --- */
 #map {
 	height: 600px;
 	width: 100%;
@@ -210,12 +210,6 @@ section[id] {
 	color: #dc2626 !important;
 	transform: scale(1.1);
 }
-.leaflet-control-layers,
-.leaflet-control-zoom {
-	border: none !important;
-	border-radius: 8px !important;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
-}
 
 /* --- Lain-lain --- */
 .team-card {
@@ -225,6 +219,14 @@ section[id] {
 	transform: translateY(-5px);
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
+
+/* PERBAIKAN DISINI: pointer-events: none dihapus */
+.team-card a {
+	text-decoration: none !important;
+	color: inherit !important;
+	cursor: pointer; /* Memastikan kursor berubah jadi tangan */
+}
+
 .social-btn-sm {
 	width: 32px;
 	height: 32px;
@@ -235,6 +237,9 @@ section[id] {
 	justify-content: center;
 	text-decoration: none;
 	transition: all 0.3s;
+	color: var(--gray-400) !important;
+	position: relative; /* Menjamin posisi */
+	z-index: 10; /* Menjamin tombol di atas elemen lain */
 }
 .social-btn-sm:hover {
 	background-color: var(--emerald);
@@ -340,10 +345,7 @@ section[id] {
 	transform: translateY(-3px);
 }
 
-/* --- RESPONSIVE LOGIC PERBAIKAN --- */
-
-/* 1. Tampilan Desktop & Tablet Landscape (> 992px) */
-/* Disini navbar TIDAK disatukan (muncul memanjang) */
+/* --- RESPONSIVE LOGIC --- */
 @media (min-width: 992px) {
 	.nav-link::after {
 		content: "";
@@ -357,15 +359,13 @@ section[id] {
 		transform: translateX(-50%);
 		opacity: 0;
 	}
-	.nav-link:hover::after,
-	.nav-link.active::after {
+	.navbar-nav .nav-link:hover::after,
+	.navbar-nav .nav-link.active::after {
 		width: 80%;
 		opacity: 1;
 	}
 }
 
-/* 2. Tampilan Mobile & Tablet Portrait (< 992px) */
-/* Disini navbar DISATUKAN (Hamburger) */
 @media (max-width: 991.98px) {
 	.navbar-collapse {
 		background: white;
@@ -381,6 +381,10 @@ section[id] {
 		text-align: center;
 		padding: 12px 0 !important;
 		border-bottom: 1px solid #f8fafc;
+	}
+	.navbar-nav .nav-link.active {
+		color: var(--emerald) !important;
+		font-weight: 700;
 	}
 	#hero {
 		padding-top: 7rem !important;
@@ -412,4 +416,42 @@ section[id] {
 	.leaflet-popup-content {
 		width: 260px !important;
 	}
+}
+
+/* --- LEAFLET CONTROL FIX (KHUSUS MOBILE AGAR RAPI) --- */
+.leaflet-control-container .leaflet-top,
+.leaflet-control-container .leaflet-bottom {
+	z-index: 9999 !important;
+	position: absolute !important;
+}
+.leaflet-touch .leaflet-bar {
+	border: none !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+.leaflet-touch .leaflet-bar a {
+	width: 44px !important;
+	height: 44px !important;
+	line-height: 44px !important;
+	background-color: white !important;
+	color: #10b981 !important;
+	border-radius: 12px !important;
+	margin-bottom: 8px !important;
+	font-weight: bold !important;
+	font-size: 20px !important;
+}
+.leaflet-right .leaflet-control-zoom {
+	margin-bottom: 30px !important;
+	margin-right: 15px !important;
+}
+.leaflet-top.leaflet-right {
+	top: 15px !important;
+	right: 15px !important;
+}
+.leaflet-control-layers-toggle {
+	width: 44px !important;
+	height: 44px !important;
+	background-size: 24px 24px !important;
+	border-radius: 12px !important;
+	background-color: white !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
 }
