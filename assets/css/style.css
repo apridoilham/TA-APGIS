@@ -8,30 +8,24 @@
 	--gray-400: #94a3b8;
 }
 
-/* --- 2. DASAR HALAMAN & SCROLL FIX --- */
+/* --- 2. DASAR HALAMAN --- */
 html {
 	scroll-behavior: smooth;
-	/* FIX UTAMA: Mencegah scroll ke samping pada level root */
 	overflow-x: hidden;
 	width: 100%;
 }
-
 body {
 	font-family: "Plus Jakarta Sans", sans-serif;
 	background-color: var(--gray);
 	color: #475569;
 	line-height: 1.6;
-	/* FIX TAMBAHAN: Memastikan body tidak melebih lebar viewport */
 	overflow-x: hidden;
 	width: 100%;
 	position: relative;
 }
-
-/* Adjust scroll margin for fixed navbar */
 section[id] {
-	scroll-margin-top: 100px;
+	scroll-margin-top: 90px;
 }
-
 .font-display {
 	font-family: "Amiri", serif;
 	letter-spacing: -0.5px;
@@ -39,39 +33,37 @@ section[id] {
 
 /* --- 3. NAVBAR PREMIUM --- */
 .glass-navbar {
-	background: rgba(255, 255, 255, 0.9);
+	background: rgba(255, 255, 255, 0.95);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-top: 12px;
+	padding-bottom: 12px;
 	transition: all 0.3s ease;
 }
-
 .navbar-brand .icon-box {
-	width: 45px;
-	height: 45px;
+	width: 42px;
+	height: 42px;
 	background: linear-gradient(135deg, var(--emerald), #059669);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	transition: transform 0.3s ease;
 }
-
 .brand-text {
 	font-family: "Amiri", serif;
 	font-weight: 700;
-	font-size: 1.4rem;
-	letter-spacing: -0.5px;
+	font-size: 1.3rem;
 }
 .brand-subtitle {
-	font-size: 0.75rem;
+	font-size: 0.7rem;
 	text-transform: uppercase;
-	letter-spacing: 1px;
+	letter-spacing: 0.5px;
 	font-weight: 600;
 }
 
+/* --- ACTIVE LINK STATE --- */
 .nav-link {
 	color: #64748b !important;
 	font-weight: 600;
@@ -79,14 +71,14 @@ section[id] {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 	padding: 0.5rem 0.5rem !important;
-	position: relative;
 	transition: color 0.3s ease;
+	position: relative;
 }
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
 	color: var(--emerald) !important;
 }
 
-/* Tombol CTA di Navbar */
 .btn-nav {
 	background: linear-gradient(135deg, var(--emerald), #059669);
 	color: white;
@@ -98,7 +90,6 @@ section[id] {
 .btn-nav:hover {
 	color: white;
 	transform: translateY(-2px);
-	box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
 }
 
 /* --- 4. STYLE UMUM --- */
@@ -132,7 +123,6 @@ section[id] {
 .bg-emerald {
 	background-color: var(--emerald) !important;
 }
-
 .btn-emerald {
 	background-color: var(--emerald);
 	color: white;
@@ -143,20 +133,18 @@ section[id] {
 .btn-emerald:hover {
 	background-color: var(--emerald-dark);
 	color: white;
-	transform: translateY(-2px);
-	box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
 }
 
 .blob-decoration {
 	position: absolute;
 	top: -50%;
-	left: -20%;
-	width: 80%;
-	height: 150%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
 	background: radial-gradient(
 		circle,
-		rgba(16, 185, 129, 0.1) 0%,
-		rgba(255, 255, 255, 0) 70%
+		rgba(16, 185, 129, 0.15) 0%,
+		transparent 60%
 	);
 	z-index: 1;
 	pointer-events: none;
@@ -168,7 +156,6 @@ section[id] {
 .hover-up:hover {
 	transform: translateY(-5px);
 }
-
 .icon-circle {
 	width: 50px;
 	height: 50px;
@@ -179,7 +166,7 @@ section[id] {
 	font-size: 1.5rem;
 }
 
-/* Maps */
+/* --- 5. MAPS & POPUP --- */
 #map {
 	height: 600px;
 	width: 100%;
@@ -190,43 +177,39 @@ section[id] {
 	border: 1px solid #e2e8f0;
 }
 
-/* Popup adjustments */
 .leaflet-popup-content-wrapper {
-	border-radius: 12px;
-	overflow: hidden;
-	border: none;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	padding: 0 !important;
+	border-radius: 16px !important;
+	overflow: hidden !important;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+	border: none !important;
 }
 .leaflet-popup-content {
-	margin: 0;
-	width: 280px !important;
-	font-family: "Plus Jakarta Sans", sans-serif;
+	margin: 0 !important;
+	width: 300px !important;
+	line-height: 1.5;
 }
-.popup-img {
-	width: 100%;
-	height: 150px;
-	object-fit: cover;
-	background-color: #e2e8f0;
+.leaflet-container a.leaflet-popup-close-button {
+	top: 10px !important;
+	right: 10px !important;
+	width: 30px !important;
+	height: 30px !important;
+	background: rgba(255, 255, 255, 0.95) !important;
+	border-radius: 50% !important;
+	color: #333 !important;
+	font-size: 20px !important;
+	line-height: 30px !important;
+	text-align: center !important;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+	font-weight: bold !important;
+	z-index: 20 !important;
+	transition: all 0.2s;
 }
-.popup-body {
-	padding: 15px;
+.leaflet-container a.leaflet-popup-close-button:hover {
+	background: #fff !important;
+	color: #dc2626 !important;
+	transform: scale(1.1);
 }
-.popup-title {
-	display: block;
-	font-weight: 700;
-	color: var(--dark);
-	font-size: 1.1rem;
-	margin-bottom: 8px;
-}
-.popup-row {
-	display: flex;
-	align-items: flex-start;
-	gap: 8px;
-	font-size: 0.85rem;
-	margin-bottom: 5px;
-	color: #64748b;
-}
-
 .leaflet-control-layers,
 .leaflet-control-zoom {
 	border: none !important;
@@ -234,7 +217,7 @@ section[id] {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Team Card */
+/* --- Lain-lain --- */
 .team-card {
 	transition: all 0.3s ease-in-out;
 }
@@ -242,8 +225,23 @@ section[id] {
 	transform: translateY(-5px);
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
+.social-btn-sm {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-color: #f1f5f9;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+.social-btn-sm:hover {
+	background-color: var(--emerald);
+	color: white !important;
+}
 
-/* Tech Stack */
+/* Tech Colors */
 .tech-icon-wrapper {
 	width: 60px;
 	height: 60px;
@@ -282,8 +280,20 @@ section[id] {
 .bg-dark-light {
 	background-color: #f1f5f9;
 }
+.bg-blue-light {
+	background-color: #e0f2fe;
+}
+.text-blue {
+	color: #0284c7;
+}
+.bg-pink-light {
+	background-color: #fce7f3;
+}
+.text-pink {
+	color: #db2777;
+}
 
-/* --- 6. FOOTER PREMIUM --- */
+/* Footer */
 .footer-premium {
 	position: relative;
 	background-color: var(--dark);
@@ -315,7 +325,6 @@ section[id] {
 .transition-all {
 	transition: all 0.3s ease;
 }
-
 .social-btn-outline {
 	width: 42px;
 	height: 42px;
@@ -331,9 +340,10 @@ section[id] {
 	transform: translateY(-3px);
 }
 
-/* --- 7. RESPONSIVE LOGIC (MEDIA QUERIES) --- */
+/* --- RESPONSIVE LOGIC PERBAIKAN --- */
 
-/* Tampilan Desktop (Layar Besar) */
+/* 1. Tampilan Desktop & Tablet Landscape (> 992px) */
+/* Disini navbar TIDAK disatukan (muncul memanjang) */
 @media (min-width: 992px) {
 	.nav-link::after {
 		content: "";
@@ -347,13 +357,15 @@ section[id] {
 		transform: translateX(-50%);
 		opacity: 0;
 	}
-	.nav-link:hover::after {
+	.nav-link:hover::after,
+	.nav-link.active::after {
 		width: 80%;
 		opacity: 1;
 	}
 }
 
-/* Tampilan Mobile & Tablet (Layar < 992px) */
+/* 2. Tampilan Mobile & Tablet Portrait (< 992px) */
+/* Disini navbar DISATUKAN (Hamburger) */
 @media (max-width: 991.98px) {
 	.navbar-collapse {
 		background: white;
@@ -362,9 +374,7 @@ section[id] {
 		border-radius: 16px;
 		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 		border: 1px solid #f1f5f9;
-		transition: all 0.3s ease-in-out;
 	}
-
 	.navbar-nav .nav-link {
 		display: block;
 		width: 100%;
@@ -372,21 +382,6 @@ section[id] {
 		padding: 12px 0 !important;
 		border-bottom: 1px solid #f8fafc;
 	}
-
-	.nav-item:nth-last-child(2) .nav-link {
-		border-bottom: none;
-		margin-bottom: 10px;
-	}
-
-	.hamburger-icon {
-		transition: transform 0.2s;
-	}
-	.navbar-toggler[aria-expanded="true"] .hamburger-icon {
-		background-color: #fef2f2 !important;
-		color: #ef4444 !important;
-		transform: rotate(90deg);
-	}
-
 	#hero {
 		padding-top: 7rem !important;
 		padding-bottom: 4rem !important;
@@ -398,7 +393,6 @@ section[id] {
 		padding-top: 3.5rem;
 		padding-bottom: 3.5rem;
 	}
-
 	.hero-title {
 		font-size: 2.25rem !important;
 		line-height: 1.2;
@@ -406,36 +400,16 @@ section[id] {
 	.section-title {
 		font-size: 1.75rem !important;
 	}
-	.display-6 {
-		font-size: 1.5rem !important;
-	}
-
 	#map {
-		height: 400px;
+		height: 450px;
 	}
-
-	.blob-decoration {
-		display: none;
-	}
-
-	.footer-premium {
-		margin-top: 50px;
-	}
-}
-
-@media (max-width: 576px) {
 	.brand-text {
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 	}
-	.navbar-brand .icon-box {
-		width: 38px;
-		height: 38px;
+	.brand-subtitle {
+		font-size: 0.65rem;
 	}
 	.leaflet-popup-content {
-		width: 220px !important;
-	}
-	#hero .btn {
-		width: 100%;
-		margin-bottom: 0.5rem;
+		width: 260px !important;
 	}
 }

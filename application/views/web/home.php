@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"/>
     
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=58.0') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=60.0') ?>">
     
     <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 </head>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="d-flex flex-column">
                     <span class="brand-text text-dark lh-1">SIG-HALAL</span>
-                    <span class="brand-subtitle text-secondary">Sawangan Area</span>
+                    <span class="brand-subtitle text-secondary">Sawangan Area <span class="mx-1 text-emerald">•</span> Kelompok 4</span>
                 </div>
             </a>
             
@@ -42,8 +42,8 @@
             <div class="collapse navbar-collapse" id="menuUtama">
                 <ul class="navbar-nav ms-auto align-items-center gap-2 gap-lg-4 mt-3 mt-lg-0 pb-3 pb-lg-0">
                     <li class="nav-item w-100 w-lg-auto"><a class="nav-link" href="#hero">Beranda</a></li>
-                    <li class="nav-item w-100 w-lg-auto"><a class="nav-link" href="#berita">Berita</a></li>
                     <li class="nav-item w-100 w-lg-auto"><a class="nav-link" href="#keterangan">Keterangan</a></li>
+                    <li class="nav-item w-100 w-lg-auto"><a class="nav-link" href="#berita">Berita</a></li>
                     <li class="nav-item w-100 w-lg-auto"><a class="nav-link" href="#wawasan">Wawasan</a></li>
                     <li class="nav-item w-100 w-lg-auto"><a class="nav-link" href="#adab">Adab</a></li>
                     <li class="nav-item w-100 w-lg-auto"><a class="nav-link" href="#peta">Peta</a></li>
@@ -86,7 +86,46 @@
         </div>
     </section>
 
-    <section id="berita" class="py-section bg-surface border-top">
+    <section id="keterangan" class="py-section bg-surface border-top">
+        <div class="container">
+            <div class="text-center mb-5 mx-auto px-3" style="max-width: 800px;">
+                <span class="text-emerald fw-bold text-uppercase ls-1 small"><i class="bi bi-info-circle-fill me-2"></i>Latar Belakang</span>
+                <h2 class="fw-bold text-dark display-6 mb-3 font-display section-title">Dinamika Kuliner Sawangan</h2>
+                <p class="text-secondary lead fs-6">Sawangan kini bukan sekadar wilayah transit, melainkan destinasi kuliner yang berkembang pesat di selatan Jakarta.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="p-4 rounded-4 bg-white h-100 border-0 text-center hover-up transition-all shadow-sm">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-surface text-emerald rounded-circle shadow-sm mb-4" style="width: 70px; height: 70px;">
+                            <i class="bi bi-geo-alt-fill fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-3">Segitiga Emas Strategis</h5>
+                        <p class="text-muted small mb-0">Sebagai jalur penghubung vital antara <strong class="text-dark">Depok, Bogor, dan Tangsel</strong>, Sawangan mengalami lonjakan lalu lintas dan pertumbuhan sentra kuliner.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="p-4 rounded-4 bg-white h-100 border-0 text-center hover-up transition-all shadow-sm">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-surface text-emerald rounded-circle shadow-sm mb-4" style="width: 70px; height: 70px;">
+                            <i class="bi bi-people-fill fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-3">Prioritas Halal</h5>
+                        <p class="text-muted small mb-0">Dengan mayoritas penduduk Muslim, jaminan <strong class="text-dark">Produk Halal</strong> bukan sekadar gaya hidup, melainkan kebutuhan fundamental demi ketenangan batin.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="p-4 rounded-4 bg-white h-100 border-0 text-center hover-up transition-all shadow-sm">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-surface text-emerald rounded-circle shadow-sm mb-4" style="width: 70px; height: 70px;">
+                            <i class="bi bi-database-check fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-3">Tantangan Informasi</h5>
+                        <p class="text-muted small mb-0">Masyarakat seringkali kesulitan memverifikasi status kehalalan UMKM karena <strong class="text-dark">minimnya data terpusat</strong>. Kami hadir sebagai jembatan informasi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="berita" class="py-section bg-white border-top">
         <div class="container">
             <div class="text-center mb-5 mx-auto px-3" style="max-width: 800px;">
                 <h6 class="text-emerald text-uppercase fw-bold ls-1"><i class="bi bi-newspaper me-2"></i>Info Terkini</h6>
@@ -95,7 +134,7 @@
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-up">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-up bg-surface">
                         <div class="position-relative">
                             <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Sertifikasi Halal" style="height: 200px; object-fit: cover;">
                             <span class="badge bg-emerald position-absolute top-0 end-0 m-3 shadow-sm">Berita</span>
@@ -109,7 +148,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-up">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-up bg-surface">
                         <div class="position-relative">
                             <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Bahan Makanan" style="height: 200px; object-fit: cover;">
                             <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 shadow-sm">Edukasi</span>
@@ -123,7 +162,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-up">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-up bg-surface">
                         <div class="position-relative">
                             <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Restoran Sawangan" style="height: 200px; object-fit: cover;">
                             <span class="badge bg-emerald position-absolute top-0 end-0 m-3 shadow-sm">Rekomendasi</span>
@@ -139,45 +178,6 @@
             </div>
             <div class="text-center mt-5">
                  <a href="#" class="btn btn-outline-dark rounded-pill px-5">Lihat Semua Berita</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="keterangan" class="py-5 bg-white border-top">
-        <div class="container">
-            <div class="text-center mb-5 mx-auto px-3" style="max-width: 800px;">
-                <span class="text-emerald fw-bold text-uppercase ls-1 small"><i class="bi bi-info-circle-fill me-2"></i>Latar Belakang</span>
-                <h2 class="fw-bold text-dark display-6 mb-3 font-display section-title">Dinamika Kuliner Sawangan</h2>
-                <p class="text-secondary lead fs-6">Sawangan kini bukan sekadar wilayah transit, melainkan destinasi kuliner yang berkembang pesat di selatan Jakarta.</p>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="p-4 rounded-4 bg-surface h-100 border-0 text-center hover-up transition-all">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white text-emerald rounded-circle shadow-sm mb-4" style="width: 70px; height: 70px;">
-                            <i class="bi bi-geo-alt-fill fs-2"></i>
-                        </div>
-                        <h5 class="fw-bold text-dark mb-3">Segitiga Emas Strategis</h5>
-                        <p class="text-muted small mb-0">Sebagai jalur penghubung vital antara <strong class="text-dark">Depok, Bogor, dan Tangsel</strong>, Sawangan mengalami lonjakan lalu lintas dan pertumbuhan sentra kuliner.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="p-4 rounded-4 bg-surface h-100 border-0 text-center hover-up transition-all">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white text-emerald rounded-circle shadow-sm mb-4" style="width: 70px; height: 70px;">
-                            <i class="bi bi-people-fill fs-2"></i>
-                        </div>
-                        <h5 class="fw-bold text-dark mb-3">Prioritas Halal</h5>
-                        <p class="text-muted small mb-0">Dengan mayoritas penduduk Muslim, jaminan <strong class="text-dark">Produk Halal</strong> bukan sekadar gaya hidup, melainkan kebutuhan fundamental demi ketenangan batin.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="p-4 rounded-4 bg-surface h-100 border-0 text-center hover-up transition-all">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white text-emerald rounded-circle shadow-sm mb-4" style="width: 70px; height: 70px;">
-                            <i class="bi bi-database-check fs-2"></i>
-                        </div>
-                        <h5 class="fw-bold text-dark mb-3">Tantangan Informasi</h5>
-                        <p class="text-muted small mb-0">Masyarakat seringkali kesulitan memverifikasi status kehalalan UMKM karena <strong class="text-dark">minimnya data terpusat</strong>. Kami hadir sebagai jembatan informasi.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -282,6 +282,7 @@
                                     <h5 class="fw-bold mb-1">Membaca Basmalah</h5>
                                     <p class="arabic-text text-emerald fs-4 mb-0">بِسْمِ اللَّهِ</p>
                                     <p class="text-white-50 small mb-0">"Dengan menyebut nama Allah"</p>
+                                    <p class="text-white-50 small mb-0">Segala kebaikan bermula dari niat. Sebelum suapan pertama, disunnahkan membaca “Bismillah”. Hal ini bertujuan untuk memohon keberkahan atas rezeki yang akan dikonsumsi serta melindungi makanan dari gangguan setan.</p>
                                 </div>
                             </div>
                         </div>
@@ -292,6 +293,7 @@
                                     <h5 class="fw-bold mb-1">Tangan Kanan</h5>
                                     <p class="arabic-text text-emerald fs-4 mb-0">كُلْ بِيَمِينِكَ</p>
                                     <p class="text-white-50 small mb-0">"Makanlah dengan tangan kananmu"</p>
+                                    <p class="text-white-50 small mb-0">Menggunakan tangan kanan adalah identitas seorang Muslim yang diajarkan langsung oleh Rasulullah SAW. Tangan kiri sebaiknya dihindari untuk aktivitas makan karena identik dengan aktivitas membersihkan kotoran.</p>
                                 </div>
                             </div>
                         </div>
@@ -302,6 +304,7 @@
                                     <h5 class="fw-bold mb-1">Akhiri Hamdalah</h5>
                                     <p class="arabic-text text-emerald fs-4 mb-0">الْحَمْدُ لِلَّهِ</p>
                                     <p class="text-white-50 small mb-0">"Segala puji bagi Allah"</p>
+                                    <p class="text-white-50 small mb-0">Setelah selesai makan, tutuplah dengan “Alhamdulillah”. Ini adalah bentuk rasa syukur kita kepada Allah yang telah memberikan rezeki, menghilangkan rasa lapar, dan memberikan kekuatan tubuh.</p>
                                 </div>
                             </div>
                         </div>
@@ -309,19 +312,22 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="d-flex align-items-center gap-3">
                                 <i class="bi bi-person-check fs-3 text-emerald"></i>
-                                <div><h6 class="fw-bold mb-0">Duduk Tawadhu</h6><small class="text-white-50">Tidak makan sambil berdiri.</small></div>
+                                <div><h6 class="fw-bold mb-0">Duduk Tawadhu</h6><small class="text-white-50">Tidak makan sambil berdiri.</small>
+                                <p class="text-white-50 small mb-0">Makan dan minum dalam posisi duduk lebih sopan (tawadhu) dan menyehatkan bagi pencernaan. Posisi ini membantu kinerja ginjal dan lambung bekerja lebih optimal dibandingkan saat berdiri.</p></div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="d-flex align-items-center gap-3">
                                 <i class="bi bi-slash-circle fs-3 text-emerald"></i>
-                                <div><h6 class="fw-bold mb-0">Tidak Mencela</h6><small class="text-white-50">Jika tidak suka, cukup tinggalkan.</small></div>
+                                <div><h6 class="fw-bold mb-0">Tidak Mencela</h6><small class="text-white-50">Jika tidak suka, cukup tinggalkan.</small>
+                                <p class="text-white-50 small mb-0">Menjaga perasaan orang yang memasak dan mensyukuri rezeki adalah akhlak mulia. Rasulullah tidak pernah mencela makanan; jika beliau suka, beliau memakannya, dan jika tidak suka, beliau meninggalkannya tanpa berkomentar buruk.</p></div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="d-flex align-items-center gap-3">
                                 <i class="bi bi-cup-straw fs-3 text-emerald"></i>
-                                <div><h6 class="fw-bold mb-0">Tidak Berlebihan</h6><small class="text-white-50">Berhenti sebelum kenyang.</small></div>
+                                <div><h6 class="fw-bold mb-0">Tidak Berlebihan</h6><small class="text-white-50">Berhenti sebelum kenyang.</small>
+                                <p class="text-white-50 small mb-0">Islam mengajarkan keseimbangan. Makanlah secukupnya untuk menegakkan tulang punggung agar kuat beribadah. Prinsipnya adalah membagi perut menjadi tiga bagian: sepertiga untuk makanan, sepertiga untuk air, dan sepertiga untuk napas.</p></div>
                             </div>
                         </div>
                     </div>
@@ -358,54 +364,103 @@
                 <p class="lead text-secondary fs-6">Berkenalan dengan tim berdedikasi yang bekerja di balik layar untuk memetakan ekosistem kuliner Halal & Thayyib di Sawangan.</p>
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 justify-content-center">
-                 <div class="col">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
-                        <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
-                            <img src="<?= base_url('assets/images/about/Aprido.png') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Aprido Ilham">
-                        </div>
-                        <h5 class="fw-bold text-dark mb-1">Aprido Ilham</h5>
-                        <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">11220930000004</p>
-                        <p class="text-secondary small opacity-75 mb-0">Project Manager</p>
-                    </div>
-                </div>
-                 <div class="col">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
-                        <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
-                            <img src="<?= base_url('assets/images/about/Fahri.png') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Fahri Afrizal">
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white position-relative overflow-hidden">
+                        <div class="mb-4 position-relative mx-auto" style="width: 120px; height: 120px;">
+                            <img src="<?= base_url('assets/images/about/Fahri.png') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover border border-4 border-white" alt="Fahri Afrizal">
+                             <div class="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 d-flex justify-content-center align-items-center shadow-sm" style="width: 32px; height: 32px;">
+                                <i class="bi bi-patch-check-fill text-primary fs-6"></i>
+                            </div>
                         </div>
                         <h5 class="fw-bold text-dark mb-1">M. Fahri Afrizal</h5>
-                        <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">1122093000002</p>
-                        <p class="text-secondary small opacity-75 mb-0">GIS Specialist</p>
+                        <p class="text-muted small mb-3">1122093000002</p>
+                        <span class="badge bg-blue-light text-blue px-3 py-2 rounded-pill mb-4 mx-auto d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-code-slash"></i> Web Developer
+                        </span>
+
+                        <div class="d-flex justify-content-center gap-3">
+                             <a href="https://www.instagram.com/mfahriafrizalblueri/" target="_blank" class="social-btn-sm text-secondary"><i class="bi bi-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
                  <div class="col">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
-                        <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
-                            <img src="<?= base_url('assets/images/about/Caesar.jpeg') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Caesar Maulana">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white position-relative overflow-hidden">
+                        <div class="mb-4 position-relative mx-auto" style="width: 120px; height: 120px;">
+                            <img src="<?= base_url('assets/images/about/Aprido.png') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover border border-4 border-white" alt="Aprido Ilham">
+                            <div class="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 d-flex justify-content-center align-items-center shadow-sm" style="width: 32px; height: 32px;">
+                                <i class="bi bi-patch-check-fill text-primary fs-6"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1">Aprido Ilham</h5>
+                        <p class="text-muted small mb-3">11220930000004</p>
+                        
+                        <span class="badge bg-emerald-light text-emerald-dark px-3 py-2 rounded-pill mb-4 mx-auto d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-briefcase-fill"></i> Project Manager
+                        </span>
+                        
+                        <div class="d-flex justify-content-center gap-3">
+                             <a href="https://www.instagram.com/apridoilham/" target="_blank" class="social-btn-sm text-secondary"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white position-relative overflow-hidden">
+                        <div class="mb-4 position-relative mx-auto" style="width: 120px; height: 120px;">
+                            <img src="<?= base_url('assets/images/about/Caesar.jpeg') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover border border-4 border-white" alt="Caesar Maulana">
+                             <div class="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 d-flex justify-content-center align-items-center shadow-sm" style="width: 32px; height: 32px;">
+                                <i class="bi bi-patch-check-fill text-primary fs-6"></i>
+                            </div>
                         </div>
                         <h5 class="fw-bold text-dark mb-1">M. Caesar M</h5>
-                        <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">11220930000016</p>
-                        <p class="text-secondary small opacity-75 mb-0">Web Developer</p>
+                        <p class="text-muted small mb-3">11220930000016</p>
+                        
+                        <span class="badge bg-purple-light text-purple px-3 py-2 rounded-pill mb-4 mx-auto d-inline-flex align-items-center gap-2">
+                             <i class="bi bi-globe-asia-australia"></i> GIS Specialist
+                        </span>
+
+                        <div class="d-flex justify-content-center gap-3">
+                             <a href="https://www.instagram.com/caesarm_19/" target="_blank" class="social-btn-sm text-secondary"><i class="bi bi-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
                  <div class="col">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
-                        <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
-                            <img src="<?= base_url('assets/images/about/Janet.jpeg') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Janniethia">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white position-relative overflow-hidden">
+                        <div class="mb-4 position-relative mx-auto" style="width: 120px; height: 120px;">
+                            <img src="<?= base_url('assets/images/about/Janet.jpeg') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover border border-4 border-white" alt="Janniethia">
+                             <div class="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 d-flex justify-content-center align-items-center shadow-sm" style="width: 32px; height: 32px;">
+                                <i class="bi bi-patch-check-fill text-primary fs-6"></i>
+                            </div>
                         </div>
                         <h5 class="fw-bold text-dark mb-1">Janniethia</h5>
-                        <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">11220930000019</p>
-                        <p class="text-secondary small opacity-75 mb-0">Data Research</p>
+                        <p class="text-muted small mb-3">11220930000019</p>
+
+                        <span class="badge bg-orange-light text-orange px-3 py-2 rounded-pill mb-4 mx-auto d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-bar-chart-fill"></i> Data Research
+                        </span>
+
+                        <div class="d-flex justify-content-center gap-3">
+                             <a href="https://www.instagram.com/janniethia29/" target="_blank" class="social-btn-sm text-secondary"><i class="bi bi-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
                  <div class="col">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white">
-                        <div class="mb-4 position-relative mx-auto" style="width: 130px; height: 130px;">
-                            <img src="<?= base_url('assets/images/about/Ayu.png') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover" alt="Ayu Kusuma">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 team-card bg-white position-relative overflow-hidden">
+                        <div class="mb-4 position-relative mx-auto" style="width: 120px; height: 120px;">
+                            <img src="<?= base_url('assets/images/about/Ayu.png') ?>" class="rounded-circle img-fluid shadow-sm w-100 h-100 object-fit-cover border border-4 border-white" alt="Ayu Kusuma">
+                             <div class="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 d-flex justify-content-center align-items-center shadow-sm" style="width: 32px; height: 32px;">
+                                <i class="bi bi-patch-check-fill text-primary fs-6"></i>
+                            </div>
                         </div>
                         <h5 class="fw-bold text-dark mb-1">Ayu Kusuma</h5>
-                        <p class="text-emerald small fw-bold text-uppercase mb-3 ls-1">11220930000021</p>
-                        <p class="text-secondary small opacity-75 mb-0">UI/UX Design</p>
+                        <p class="text-muted small mb-3">11220930000021</p>
+
+                        <span class="badge bg-pink-light text-pink px-3 py-2 rounded-pill mb-4 mx-auto d-inline-flex align-items-center gap-2">
+                             <i class="bi bi-palette-fill"></i> UI/UX Design
+                        </span>
+
+                        <div class="d-flex justify-content-center gap-3">
+                             <a href="https://www.instagram.com/ayuksmdww/" target="_blank" class="social-btn-sm text-secondary"><i class="bi bi-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
             </div> 
@@ -424,28 +479,32 @@
                     <div class="tech-card bg-white p-3 p-md-4 rounded-4 text-center h-100 shadow-sm border border-light position-relative overflow-hidden">
                         <div class="tech-icon-wrapper bg-orange-light text-orange mb-3 mx-auto"><i class="bi bi-fire fs-3"></i></div>
                         <h6 class="fw-bold text-dark mb-1">CodeIgniter 3</h6>
-                        <small class="text-muted d-block">Backend</small>
+                        <small class="text-muted d-block fw-semibold mb-2">Backend Framework</small>
+                        <p class="small text-muted mb-0" style="font-size: 0.75rem; line-height: 1.4;">Framework PHP yang ringan dan cepat, menangani logika backend dan routing data GIS dengan efisiensi tinggi.</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="tech-card bg-white p-3 p-md-4 rounded-4 text-center h-100 shadow-sm border border-light position-relative overflow-hidden">
                         <div class="tech-icon-wrapper bg-purple-light text-purple mb-3 mx-auto"><i class="bi bi-bootstrap-fill fs-3"></i></div>
                         <h6 class="fw-bold text-dark mb-1">Bootstrap 5</h6>
-                        <small class="text-muted d-block">Frontend</small>
+                        <small class="text-muted d-block fw-semibold mb-2">Frontend Framework</small>
+                        <p class="small text-muted mb-0" style="font-size: 0.75rem; line-height: 1.4;">Menjamin tampilan antarmuka yang modern, bersih, dan responsif agar nyaman diakses via ponsel maupun desktop.</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="tech-card bg-white p-3 p-md-4 rounded-4 text-center h-100 shadow-sm border border-light position-relative overflow-hidden">
                         <div class="tech-icon-wrapper bg-green-light text-green mb-3 mx-auto"><i class="bi bi-map-fill fs-3"></i></div>
                         <h6 class="fw-bold text-dark mb-1">Leaflet JS</h6>
-                        <small class="text-muted d-block">Maps</small>
+                        <small class="text-muted d-block fw-semibold mb-2">Maps Engine</small>
+                        <p class="small text-muted mb-0" style="font-size: 0.75rem; line-height: 1.4;">Library open-source andalan untuk merender peta interaktif, marker, dan layer geografis tanpa membebani browser.</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="tech-card bg-white p-3 p-md-4 rounded-4 text-center h-100 shadow-sm border border-light position-relative overflow-hidden">
                         <div class="tech-icon-wrapper bg-dark-light text-dark mb-3 mx-auto"><i class="bi bi-filetype-json fs-3"></i></div>
                         <h6 class="fw-bold text-dark mb-1">GeoJSON</h6>
-                        <small class="text-muted d-block">Data</small>
+                        <small class="text-muted d-block fw-semibold mb-2">Spatial Data</small>
+                        <p class="small text-muted mb-0" style="font-size: 0.75rem; line-height: 1.4;">Format standar berbasis JSON untuk menyimpan dan mentransfer data spasial (koordinat lokasi) secara terstruktur.</p>
                     </div>
                 </div>
             </div>
@@ -509,13 +568,7 @@
             
             <div class="row align-items-center pb-3">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <small class="text-gray-400">© 2025 <strong>Kelompok 4 SIG</strong>. All rights reserved.</small>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <ul class="list-inline mb-0 small">
-                        <li class="list-inline-item me-3"><a href="#" class="text-gray-400 text-decoration-none footer-link">Privacy</a></li>
-                        <li class="list-inline-item"><span class="text-gray-400">Dibuat dengan <i class="bi bi-heart-fill text-danger mx-1"></i></span></li>
-                    </ul>
+                    <small class="text-gray-400">© 2025 <strong>Kelompok 4 ASIG</strong>. All rights reserved.</small>
                 </div>
             </div>
         </div>
@@ -525,6 +578,6 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
     <script>const BASE_URL = '<?= base_url() ?>';</script>
-    <script src="<?= base_url('assets/js/main.js?v=58.0') ?>"></script>
+    <script src="<?= base_url('assets/js/main.js?v=60.0') ?>"></script>
 </body>
 </html>

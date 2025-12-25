@@ -120,7 +120,7 @@
 				"ALAMAT": "Jl. Abdul Wahab No.rt 02/05, Sawangan, Kec. Sawangan, Kota Depok, Jawa Barat 16511",
 				"FOTO": "assets/images/resto/Mie Ayam & Bakso Wonogiri Mas Pur.jpg",
 				"JAM_BUKA": "Setiap hari, 09.30 – 21.30",
-				"RENTANG_HARGA": "Rp 1 – Rp 25.000"
+				"RENTANG_HARGA": "Rp 10.000 – Rp 25.000"
 			},
 			"geometry": {
 				"type": "Point",
@@ -176,7 +176,7 @@
 				"ALAMAT": "Gg. Kb. Kopi, RT.03/RW.07. Kp, kebonkopi, Pengasinan, Kec. Sawangan, Kota Depok, Jawa Barat 16518",
 				"FOTO": "assets/images/resto/Ayam gepuk Pak Gembus pengasinan depok.jpg",
 				"JAM_BUKA": "Setiap hari, 10.00 – 22.00",
-				"RENTANG_HARGA": "Rp 1 – Rp 25.000"
+				"RENTANG_HARGA": "Rp 12.000 – Rp 25.000"
 			},
 			"geometry": {
 				"type": "Point",
@@ -190,7 +190,7 @@
 				"ALAMAT": "Jalan Caringin, Bedahan, Kec. Sawangan, Kota Depok, Jawa Barat 16519",
 				"FOTO": "assets/images/resto/Bakso Malang Arema Sari Rasa.jpg",
 				"JAM_BUKA": "Setiap hari, 10.00 – 21.00",
-				"RENTANG_HARGA": "Rp 1 – Rp 25.000"
+				"RENTANG_HARGA": "Rp 10.000 – Rp 25.000"
 			},
 			"geometry": {
 				"type": "Point",
