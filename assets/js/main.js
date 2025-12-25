@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 	// 1. TITIK TENGAH (Sawangan)
 	const center = [-6.3811, 106.7725];
-	const zoom = 14;
+	// Zoom awal disesuaikan jika mobile
+	const isMobile = window.innerWidth < 768;
+	const zoom = isMobile ? 13 : 14;
 
 	// 2. JENIS-JENIS PETA (Layer)
 	// Peta Jalan
@@ -36,7 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
 		zoom: zoom,
 		zoomControl: false, // Zoom dipindah ke bawah
 		layers: [g_road], // Default: Jalan
+		dragging: !L.Browser.mobile, // Opsional: Matikan drag di mobile agar tidak mengganggu scroll halaman (bisa dihapus jika ingin tetap bisa drag)
+		tap: !L.Browser.mobile,
 	});
+
+	// Aktifkan kembali drag jika user ingin interaksi (opsional)
+	if (L.Browser.mobile) {
+		map.dragging.enable();
+		map.tap.enable();
+	}
+
 	L.control.zoom({ position: "bottomright" }).addTo(map);
 
 	// 4. GRUP MARKER (Wadah Titik Restoran)
@@ -54,9 +65,17 @@ document.addEventListener("DOMContentLoaded", function () {
 	const overlayMaps = {
 		"📍 Tampilkan Restoran": markerGroup,
 		"🗺️ Batas Wilayah": polygonGroup, // Menambahkan polygon ke control
-		"🛣️ Jaringan Jalan": roadGroup
+		"🛣️ Jaringan Jalan": roadGroup,
 	};
-	L.control.layers(baseMaps, overlayMaps, { position: "topright" }).addTo(map);
+
+	// Di Mobile, collapsed true agar tidak makan tempat
+	L.control
+		.layers(baseMaps, overlayMaps, {
+			position: "topright",
+			collapsed: true,
+		})
+		.addTo(map);
+
 	// 6. MINIMAP SINKRON (Fitur Keren)
 	// Layer khusus minimap agar tidak bentrok
 	const mm_road = L.tileLayer(
@@ -71,13 +90,16 @@ document.addEventListener("DOMContentLoaded", function () {
 		"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 	);
 
-	const miniMap = new L.Control.MiniMap(mm_road, {
+	// Logic Minimap Responsive
+	const miniMapOptions = {
 		toggleDisplay: true,
-		minimized: false,
+		minimized: isMobile, // Jika mobile, defaultnya minimized (tertutup)
 		position: "bottomleft",
-		width: 140,
-		height: 140,
-	}).addTo(map);
+		width: isMobile ? 100 : 140, // Ukuran lebih kecil di mobile
+		height: isMobile ? 100 : 140,
+	};
+
+	const miniMap = new L.Control.MiniMap(mm_road, miniMapOptions).addTo(map);
 
 	// Logika Ganti Tema MiniMap
 	map.on("baselayerchange", function (e) {
@@ -148,54 +170,51 @@ document.addEventListener("DOMContentLoaded", function () {
 			alert("Gagal memuat data peta. Pastikan file GeoJSON ada.");
 		});
 
-		fetch(cleanUrl + "assets/jalan_sawangan.geojson")
-        .then((res) => res.json())
-        .then((data) => {
-            L.geoJSON(data, {
-                // Style Jalan: Garis agak tebal, warna biru tua/abu-abu
-                style: function(feature) {
-                    return {
-                        color: "#6f7c8fff",   // Warna Biru Standar Jalan
-                        weight: 2,          // Ketebalan garis
-                        opacity: 0.8        // Tidak terlalu transparan
-                    };
-                },
-                
-                onEachFeature: function(feature, layer) {
-                    roadGroup.addLayer(layer);
-                }
-            });
-            
-            polygonGroup.bringToBack();
+	fetch(cleanUrl + "assets/jalan_sawangan.geojson")
+		.then((res) => res.json())
+		.then((data) => {
+			L.geoJSON(data, {
+				// Style Jalan: Garis agak tebal, warna biru tua/abu-abu
+				style: function (feature) {
+					return {
+						color: "#6f7c8fff", // Warna Biru Standar Jalan
+						weight: 2, // Ketebalan garis
+						opacity: 0.8, // Tidak terlalu transparan
+					};
+				},
 
-        })
-        .catch(
-			(err) => console.error("Error Jalan:", err)
-	);
+				onEachFeature: function (feature, layer) {
+					roadGroup.addLayer(layer);
+				},
+			});
+
+			polygonGroup.bringToBack();
+		})
+		.catch((err) => console.error("Error Jalan:", err));
 
 	fetch(cleanUrl + "assets/sawangan_pg.geojson")
-    .then((res) => res.json())
-    .then((data) => {
-        L.geoJSON(data, {
-            style: function(feature) {
-                return {
-                    color: "#999",        // Warna garis batas
-                    weight: 1,            // Ketebalan garis
-                    fillColor: "#31a354", // Warna isi (hijau)
-                    fillOpacity: 0.6
-                };
-            },
+		.then((res) => res.json())
+		.then((data) => {
+			L.geoJSON(data, {
+				style: function (feature) {
+					return {
+						color: "#999", // Warna garis batas
+						weight: 1, // Ketebalan garis
+						fillColor: "#31a354", // Warna isi (hijau)
+						fillOpacity: 0.6,
+					};
+				},
 
-            onEachFeature: function(feature, layer) {
-                // Popup nama wilayah (opsional, bisa dihapus jika tidak dibutuhkan)
-                if (feature.properties && feature.properties.NAMOBJ) {
-                    layer.bindPopup(feature.properties.NAMOBJ);
-                }
+				onEachFeature: function (feature, layer) {
+					// Popup nama wilayah (opsional, bisa dihapus jika tidak dibutuhkan)
+					if (feature.properties && feature.properties.NAMOBJ) {
+						layer.bindPopup(feature.properties.NAMOBJ);
+					}
 
-                // Masukkan ke group polygon
-                polygonGroup.addLayer(layer);
-            }
-        });
-    })
-    .catch((err) => console.error("Error Polygon:", err));
+					// Masukkan ke group polygon
+					polygonGroup.addLayer(layer);
+				},
+			});
+		})
+		.catch((err) => console.error("Error Polygon:", err));
 });
