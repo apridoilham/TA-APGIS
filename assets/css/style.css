@@ -220,11 +220,11 @@ section[id] {
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
-/* PERBAIKAN DISINI: pointer-events: none dihapus */
+/* FIX TOMBOL KLIK DI SINI */
 .team-card a {
 	text-decoration: none !important;
 	color: inherit !important;
-	cursor: pointer; /* Memastikan kursor berubah jadi tangan */
+	cursor: pointer;
 }
 
 .social-btn-sm {
@@ -238,8 +238,8 @@ section[id] {
 	text-decoration: none;
 	transition: all 0.3s;
 	color: var(--gray-400) !important;
-	position: relative; /* Menjamin posisi */
-	z-index: 10; /* Menjamin tombol di atas elemen lain */
+	position: relative;
+	z-index: 10;
 }
 .social-btn-sm:hover {
 	background-color: var(--emerald);
@@ -418,7 +418,7 @@ section[id] {
 	}
 }
 
-/* --- LEAFLET CONTROL FIX (KHUSUS MOBILE AGAR RAPI) --- */
+/* --- LEAFLET CONTROL FIX (KHUSUS MOBILE) --- */
 .leaflet-control-container .leaflet-top,
 .leaflet-control-container .leaflet-bottom {
 	z-index: 9999 !important;
@@ -454,4 +454,34 @@ section[id] {
 	border-radius: 12px !important;
 	background-color: white !important;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* --- FIX LEAFLET vs BOOTSTRAP (WAJIB ADA UNTUK FIX MINIMAP) --- */
+/* Mencegah Bootstrap memaksa ukuran gambar di dalam peta, yang bikin minimap berantakan */
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container img.leaflet-tile {
+	max-width: none !important;
+	max-height: none !important;
+	width: auto;
+	padding: 0;
+}
+
+/* Styling Khusus Minimap agar lebih jelas & tidak lemot */
+.leaflet-control-minimap {
+	border: 2px solid white !important;
+	border-radius: 8px !important;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+	transition: all 0.3s;
+}
+
+/* Mempertegas Garis Merah (Aiming Rect) */
+.leaflet-minimap-aiming-rect {
+	stroke: #ef4444 !important; /* Warna Merah Terang */
+	stroke-width: 2px !important;
+	fill-opacity: 0 !important;
+}
+
+/* Fix z-index agar tidak tertutup elemen lain */
+.leaflet-bottom.leaflet-left {
+	z-index: 1000;
 }

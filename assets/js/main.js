@@ -69,35 +69,56 @@ document.addEventListener("DOMContentLoaded", function () {
 		)
 		.addTo(map);
 
-	// 3. MINIMAP SINKRON
-	const mm_road = L.tileLayer(
-		"http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
-		{ subdomains: ["mt0", "mt1", "mt2", "mt3"] }
-	);
-	const mm_sat = L.tileLayer(
-		"http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-		{ subdomains: ["mt0", "mt1", "mt2", "mt3"] }
-	);
-	const mm_osm = L.tileLayer(
-		"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+	// 3. MINIMAP SINKRON (VERSI FIX)
+	// Gunakan OSM untuk minimap agar ringan dan tidak blank
+	const mm_layer = L.tileLayer(
+		"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+		{ attribution: "" }
 	);
 
-	const miniMap = new L.Control.MiniMap(mm_road, {
+	const miniMap = new L.Control.MiniMap(mm_layer, {
 		toggleDisplay: true,
-		minimized: isMobile,
+		minimized: false, // Default terbuka
 		position: "bottomleft",
-		width: isMobile ? 100 : 120,
-		height: isMobile ? 100 : 120,
+		width: isMobile ? 120 : 150, // Ukuran sedikit lebih besar agar jelas
+		height: isMobile ? 120 : 150,
+		zoomLevelOffset: -5,
+		aimingRectOptions: {
+			color: "#ef4444", // Merah Terang
+			weight: 2,
+			clickable: false,
+		},
+		shadowRectOptions: {
+			color: "#000000",
+			weight: 1,
+			clickable: false,
+			opacity: 0,
+			fillOpacity: 0,
+		},
 	}).addTo(map);
 
+	// FIX UTAMA: Paksa refresh ukuran minimap setelah 1 detik
+	// Ini mengatasi masalah peta putih/blank
+	setTimeout(() => {
+		miniMap._miniMap.invalidateSize();
+	}, 1000);
+
+	// Opsional: Ganti layer minimap jika user ganti layer utama
 	map.on("baselayerchange", function (e) {
-		if (e.name === "Peta Jalan") {
-			miniMap.changeLayer(mm_road);
-		} else if (e.name === "Peta Satelit") {
-			miniMap.changeLayer(mm_sat);
-		} else if (e.name === "OpenStreetMap") {
-			miniMap.changeLayer(mm_osm);
+		let newMiniLayer;
+		if (e.name === "Peta Satelit") {
+			// Jika user pilih satelit, minimap pakai satelit juga
+			newMiniLayer = L.tileLayer(
+				"http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+				{ subdomains: ["mt0", "mt1", "mt2", "mt3"] }
+			);
+		} else {
+			// Selain itu pakai OSM yang ringan
+			newMiniLayer = L.tileLayer(
+				"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+			);
 		}
+		miniMap.changeLayer(newMiniLayer);
 	});
 
 	// 4. ICON MARKER
@@ -134,6 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
 							? cleanUrl + p.FOTO
 							: "https://placehold.co/400x250/eee/999?text=No+Image";
 
+					// Perbaikan format URL Google Maps agar valid
+					const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+						nama + " " + alamat
+					)}`;
+
 					const popupHTML = `
                         <div class="card border-0 shadow-none w-100" style="font-family: 'Plus Jakarta Sans', sans-serif; margin: 0;">
                             <div class="position-relative">
@@ -167,9 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         <span class="text-secondary fw-medium lh-sm" style="font-size: 0.75rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${alamat}</span>
                                     </div>
                                 </div>
-                                <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-																	nama + " Sawangan Depok"
-																)}" 
+                                <a href="${googleMapsUrl}" 
                                    target="_blank" 
                                    class="btn btn-sm btn-emerald w-100 rounded-pill py-2 fw-bold shadow-sm">
                                     <i class="bi bi-cursor-fill me-2"></i>Petunjuk Arah
